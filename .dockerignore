@@ -1,0 +1,42 @@
+# Git
+.git
+.gitignore
+
+# Banco de dados SQLite (será armazenado no volume)
+*.db
+*.sqlite
+*.sqlite3
+
+# Arquivos de configuração com informações sensíveis (montados como volumes)
+instance/
+
+# Virtualenv
+env/
+venv/
+ENV/
+
+# Arquivos Python compilados
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Diretório de uploads (montado como volume)
+uploads/*
+
+# Diretório de sessão do Flask
+flask_session/
+
+# Arquivos do Docker
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Outros
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+*.log 

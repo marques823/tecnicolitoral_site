@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    container_name: tecnicolitoral-web
+    restart: always
+    ports:
+      - "9998:9998"
+    volumes:
+      - ./uploads:/app/uploads
+      - ./instance:/app/instance
+      - db-data:/app/data
+    environment:
+      - FLASK_ENV=production
+      - DATABASE_PATH=/app/data/tecnicolitoral.db
+    networks:
+      - tecnicolitoral-network
+
+networks:
+  tecnicolitoral-network:
+    driver: bridge
+
+volumes:
+  db-data:
+    driver: local 
