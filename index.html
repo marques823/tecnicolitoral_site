@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Técnico Litoral - Segurança Eletrônica e Automação</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" id="favicon" href="">
     <style>
         :root {
             --dark-blue: #003366;
@@ -53,6 +54,14 @@
             font-weight: 700;
             color: var(--white);
             text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            max-height: 50px;
+            max-width: 200px;
+            margin-right: 10px;
         }
         
         .nav-links {
@@ -359,7 +368,9 @@
     <header>
         <div class="container">
             <nav>
-                <a href="#" class="logo">Técnico Litoral</a>
+                <a href="#" class="logo">
+                    <img src="logo.png" alt="Logo">
+                </a>
                 <ul class="nav-links">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#services">Serviços</a></li>
@@ -437,7 +448,7 @@
             <h2 class="section-title">Sobre Nós</h2>
             <div class="about-content">
                 <div>
-                    <p>A Técnico Litoral é uma empresa especializada em soluções de segurança eletrônica e automação, atendendo clientes residenciais e empresariais na região do litoral.</p>
+                    <p id="about-text">A Técnico Litoral é uma empresa especializada em soluções de segurança eletrônica e automação, atendendo clientes residenciais e empresariais na região do litoral.</p>
                     <p>Contamos com profissionais experientes e qualificados, comprometidos em oferecer serviços de alta qualidade e atendimento personalizado.</p>
                     <p>Nossa missão é proporcionar tranquilidade e segurança através de soluções tecnológicas modernas e eficientes.</p>
                 </div>
@@ -453,8 +464,8 @@
                     <div class="contact-icon">
                         <i class="fas fa-phone"></i>
                     </div>
-                    <p>(XX) XXXXX-XXXX</p>
-                    <a href="https://wa.me/55XXXXXXXXXXX" target="_blank" class="whatsapp-link">
+                    <p id="contact-phone">(XX) XXXXX-XXXX</p>
+                    <a id="contact-whatsapp" href="https://wa.me/55XXXXXXXXXXX" target="_blank" class="whatsapp-link">
                         <i class="fab fa-whatsapp"></i>
                     </a>
                 </div>
@@ -462,16 +473,15 @@
                     <div class="contact-icon">
                         <i class="fas fa-envelope"></i>
                     </div>
-                    <a href="mailto:contato@tecnicolitoral.com.br" class="email-link">contato@tecnicolitoral.com.br</a>
+                    <a id="contact-email" href="mailto:contato@tecnicolitoral.com.br" class="email-link">contato@tecnicolitoral.com.br</a>
                 </div>
                 <div class="contact-item">
                     <div class="contact-icon">
                         <i class="fas fa-map-marker-alt"></i>
                     </div>
-                    <p>Barra do Shay, São Sebastião - São Paulo</p>
+                    <p id="contact-address">Barra do Shay, São Sebastião - São Paulo</p>
                 </div>
             </div>
-
         </div>
     </section>
 
@@ -482,82 +492,61 @@
     </footer>
 
     <script>
-        // Função para carregar as configurações
+        // Carregar configurações do site
         async function loadConfig() {
             try {
-                console.log('Iniciando carregamento de configurações');
                 const response = await fetch('/api/config');
-                if (!response.ok) {
-                    throw new Error('Erro ao carregar configurações');
-                }
-                
                 const config = await response.json();
-                console.log('Configurações carregadas:', config);
                 
                 // Atualizar informações de contato
-                document.querySelector('.contact-item:nth-child(1) p').textContent = config.contact.phone;
-                document.querySelector('.contact-item:nth-child(1) a').href = `https://wa.me/${config.contact.whatsapp}`;
-                
-                document.querySelector('.contact-item:nth-child(2) a').textContent = config.contact.email;
-                document.querySelector('.contact-item:nth-child(2) a').href = `mailto:${config.contact.email}`;
-                
-                document.querySelector('.contact-item:nth-child(3) p').textContent = config.contact.address;
-                
-                // Atualizar o mapa com o endereço codificado para URL
-                const mapAddress = encodeURIComponent(config.contact.address);
-                const mapContainer = document.querySelector('.map-container iframe');
-                if (mapContainer) {
-                    mapContainer.src = `https://maps.google.com/maps?q=${mapAddress}&amp;t=m&amp;z=12&amp;ie=UTF8&amp;iwloc=&amp;output=embed`;
-                } else {
-                    console.log('Elemento do mapa não encontrado');
-                }
+                document.getElementById('contact-phone').textContent = config.contact.phone;
+                document.getElementById('contact-whatsapp').setAttribute('href', `https://wa.me/${config.contact.whatsapp}`);
+                document.getElementById('contact-email').textContent = config.contact.email;
+                document.getElementById('contact-email').setAttribute('href', `mailto:${config.contact.email}`);
+                document.getElementById('contact-address').textContent = config.contact.address;
                 
                 // Atualizar texto sobre a empresa
-                const aboutParagraph = document.querySelector('.about-content p:nth-child(1)');
-                if (aboutParagraph) {
-                    aboutParagraph.textContent = config.about.text;
-                } else {
-                    console.log('Elemento do texto sobre a empresa não encontrado');
+                document.getElementById('about-text').innerHTML = config.about.text.replace(/\n/g, '<br>');
+
+                // Carregar logo e favicon
+                if (config.branding && config.branding.logo) {
+                    const logoImg = document.querySelector('.logo img');
+                    if (logoImg) {
+                        logoImg.src = `/static/img/${config.branding.logo}`;
+                        logoImg.alt = "Técnico Litoral";
+                        console.log('Logo carregado:', config.branding.logo);
+                    }
+                }
+
+                if (config.branding && config.branding.favicon) {
+                    const favicon = document.getElementById('favicon');
+                    if (favicon) {
+                        favicon.href = `/static/img/${config.branding.favicon}`;
+                        console.log('Favicon carregado:', config.branding.favicon);
+                    }
                 }
                 
-                // Verificar se existem imagens nas configurações
-                let images = config.gallery && config.gallery.images ? config.gallery.images : [];
-                console.log('Imagens das configurações:', images);
+                // Obter imagens da galeria
+                let images = [];
                 
-                // Se não houver imagens nas configurações, verificar a API de imagens
+                if (config.gallery && config.gallery.images) {
+                    images = config.gallery.images;
+                }
+                
+                // Se não houver imagens na configuração, tentar buscar da API
                 if (!images.length) {
-                    console.log('Nenhuma imagem encontrada nas configurações, verificando API de imagens...');
+                    console.log('Sem imagens na configuração, tentando buscar da API...');
                     try {
                         const imagesResponse = await fetch('/api/images');
                         if (imagesResponse.ok) {
                             const imagesData = await imagesResponse.json();
                             if (imagesData.images && imagesData.images.length) {
-                                console.log('Imagens encontradas na API:', imagesData.images);
                                 images = imagesData.images;
+                                console.log('Imagens obtidas da API:', images);
                             }
                         }
                     } catch (imageError) {
                         console.error('Erro ao buscar imagens da API:', imageError);
-                    }
-                }
-                
-                // Se ainda não houver imagens, verificar o status das imagens
-                if (!images.length) {
-                    console.log('Tentando verificar o status das imagens no sistema...');
-                    try {
-                        const statusResponse = await fetch('/api/image-status');
-                        if (statusResponse.ok) {
-                            const statusData = await statusResponse.json();
-                            console.log('Status das imagens:', statusData);
-                            
-                            // Usar arquivos físicos se disponíveis
-                            if (statusData.physical_files && statusData.physical_files.length) {
-                                console.log('Usando arquivos físicos encontrados:', statusData.physical_files);
-                                images = statusData.physical_files;
-                            }
-                        }
-                    } catch (statusError) {
-                        console.error('Erro ao verificar status das imagens:', statusError);
                     }
                 }
                 

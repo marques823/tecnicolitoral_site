@@ -81,7 +81,9 @@ def init_db():
         'contact_email': 'contato@tecnicolitoral.com.br',
         'contact_address': 'Barra do Shay, São Sebastião - São Paulo',
         'about_text': 'A Técnico Litoral é uma empresa especializada em soluções de segurança eletrônica e automação, atendendo clientes residenciais e empresariais na região do litoral.\n\nContamos com profissionais experientes e qualificados, comprometidos em oferecer serviços de alta qualidade e atendimento personalizado.\n\nNossa missão é proporcionar tranquilidade e segurança através de soluções tecnológicas modernas e eficientes.',
-        'admin_password': 'admin123'
+        'admin_password': 'admin123',
+        'logo_image': 'default_logo.png',
+        'favicon_image': 'default_favicon.ico'
     }
     
     # Verificar se já existem configurações
@@ -95,6 +97,32 @@ def init_db():
 
 # Inicializar banco de dados ao iniciar o aplicativo
 init_db()
+
+# Garantir que os diretórios e arquivos estáticos existam
+os.makedirs('static/img', exist_ok=True)
+
+# Verificar arquivos de logo e favicon padrão
+default_logo_path = 'static/img/default_logo.png'
+default_favicon_path = 'static/img/default_favicon.ico'
+
+# Criar arquivos padrão se não existirem (pode ser substituído por arquivos reais mais tarde)
+if not os.path.exists(default_logo_path):
+    # Criar um logo simples como fallback
+    try:
+        img = Image.new('RGB', (200, 80), color = (0, 123, 255))
+        d = Image.Draw(img)
+        d.text((40, 30), "Técnico Litoral", fill=(255, 255, 255))
+        img.save(default_logo_path)
+    except Exception as e:
+        print(f"Não foi possível criar o logo padrão: {e}")
+
+if not os.path.exists(default_favicon_path):
+    # Criar um favicon simples como fallback
+    try:
+        img = Image.new('RGB', (32, 32), color = (0, 123, 255))
+        img.save(default_favicon_path)
+    except Exception as e:
+        print(f"Não foi possível criar o favicon padrão: {e}")
 
 # Migrar dados do config.json para o banco de dados (se existir)
 def migrate_from_json():
@@ -173,6 +201,10 @@ def load_config():
         },
         'admin': {
             'password': ''
+        },
+        'branding': {
+            'logo': '',
+            'favicon': ''
         }
     }
     
@@ -193,6 +225,10 @@ def load_config():
             config['about']['text'] = value
         elif key == 'admin_password':
             config['admin']['password'] = value
+        elif key == 'logo_image':
+            config['branding']['logo'] = value
+        elif key == 'favicon_image':
+            config['branding']['favicon'] = value
     
     return config
 
@@ -588,6 +624,105 @@ def repair_db():
         })
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+
+@app.route('/static/<path:filename>')
+def serve_static(filename):
+    return send_from_directory('static', filename)
+
+# Rota para processar o upload de um novo logo
+@app.route('/api/upload-logo', methods=['POST'])
+@login_required
+def upload_logo():
+    if 'file' not in request.files:
+        return jsonify({'status': 'error', 'message': 'No file uploaded'}), 400
+    
+    file = request.files['file']
+    if file.filename == '':
+        return jsonify({'status': 'error', 'message': 'No file selected'}), 400
+    
+    # Verificar extensão
+    ext = os.path.splitext(file.filename)[1].lower()
+    allowed_extensions = ['.png', '.jpg', '.jpeg', '.svg', '.gif']
+    
+    if ext not in allowed_extensions:
+        return jsonify({'status': 'error', 'message': f'Formato não suportado. Use {", ".join(allowed_extensions)}'}), 400
+    
+    try:
+        # Gerar um nome de arquivo único
+        unique_filename = f"logo_{uuid.uuid4()}{ext}"
+        save_path = os.path.join('static/img', unique_filename)
+        
+        # Processar imagem
+        img = Image.open(file)
+        
+        # Converter imagens com transparência
+        if img.mode == 'RGBA' and ext not in ['.png', '.svg']:
+            img = img.convert('RGB')
+        
+        # Redimensionar se necessário (max 300px de largura mantendo proporção)
+        max_width = 300
+        if img.width > max_width:
+            ratio = max_width / img.width
+            new_height = int(img.height * ratio)
+            img = img.resize((max_width, new_height), Image.LANCZOS)
+        
+        # Salvar
+        img.save(save_path)
+        
+        # Atualizar configuração no banco de dados
+        save_config_value('logo_image', unique_filename)
+        
+        return jsonify({
+            'status': 'success',
+            'message': 'Logo atualizado com sucesso',
+            'filename': unique_filename
+        })
+        
+    except Exception as e:
+        return jsonify({'status': 'error', 'message': str(e)}), 500
+
+# Rota para processar o upload de um novo favicon
+@app.route('/api/upload-favicon', methods=['POST'])
+@login_required
+def upload_favicon():
+    if 'file' not in request.files:
+        return jsonify({'status': 'error', 'message': 'No file uploaded'}), 400
+    
+    file = request.files['file']
+    if file.filename == '':
+        return jsonify({'status': 'error', 'message': 'No file selected'}), 400
+    
+    # Verificar extensão
+    ext = os.path.splitext(file.filename)[1].lower()
+    if ext not in ['.ico', '.png']:
+        return jsonify({'status': 'error', 'message': 'Formato não suportado. Use .ico ou .png'}), 400
+    
+    try:
+        # Gerar um nome de arquivo único
+        unique_filename = f"favicon_{uuid.uuid4()}{ext}"
+        save_path = os.path.join('static/img', unique_filename)
+        
+        # Processar imagem
+        img = Image.open(file)
+        
+        # Garantir que o tamanho do favicon é adequado
+        if ext == '.png':
+            img = img.resize((32, 32), Image.LANCZOS)
+        
+        # Salvar
+        img.save(save_path)
+        
+        # Atualizar configuração no banco de dados
+        save_config_value('favicon_image', unique_filename)
+        
+        return jsonify({
+            'status': 'success',
+            'message': 'Favicon atualizado com sucesso',
+            'filename': unique_filename
+        })
+        
+    except Exception as e:
+        return jsonify({'status': 'error', 'message': str(e)}), 500
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=9998, debug=True) 
