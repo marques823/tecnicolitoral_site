@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Técnico Litoral - Segurança Eletrônica e Automação</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --dark-blue: #003366;
+            --medium-blue: #005792;
+            --dark-green: #004d40;
+            --light-green: #00796b;
+            --light-gray: #f5f5f5;
+            --white: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', Arial, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-gray);
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--dark-blue);
+            color: var(--white);
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+        
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--light-green);
+        }
+        
+        .hero {
+            background: linear-gradient(to right, var(--dark-blue), var(--dark-green));
+            color: var(--white);
+            padding: 5rem 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--light-green);
+            color: var(--white);
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: var(--dark-green);
+        }
+        
+        .services {
+            padding: 4rem 0;
+            background-color: var(--white);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--dark-blue);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--medium-blue);
+            margin-bottom: 1rem;
+        }
+        
+        .service-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--dark-blue);
+        }
+        
+        .about {
+            padding: 4rem 0;
+            background-color: var(--light-gray);
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .contact {
+            padding: 4rem 0;
+            background-color: var(--white);
+        }
+        
+        .contact-info {
+            margin-top: 2rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-icon {
+            font-size: 1.2rem;
+            color: var(--medium-blue);
+            margin-right: 1rem;
+        }
+        
+        .whatsapp-link {
+            color: #25D366;
+            margin-left: 0.5rem;
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+        
+        .whatsapp-link:hover {
+            transform: scale(1.1);
+        }
+        
+        .email-link {
+            color: var(--medium-blue);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .email-link:hover {
+            color: var(--dark-blue);
+            text-decoration: underline;
+        }
+        
+        .gallery {
+            padding: 4rem 0;
+            background-color: var(--light-gray);
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            aspect-ratio: 1;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        /* Estilos para o carrossel */
+        .carousel {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .carousel-container {
+            display: flex;
+            transition: transform 0.5s ease;
+            height: 450px;
+        }
+        
+        .carousel-slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            z-index: 10;
+            transition: background-color 0.3s;
+        }
+        
+        .carousel-button:hover {
+            background-color: rgba(0,0,0,0.8);
+        }
+        
+        .carousel-button.prev {
+            left: 10px;
+        }
+        
+        .carousel-button.next {
+            right: 10px;
+        }
+        
+        .carousel-indicators {
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            z-index: 10;
+        }
+        
+        .carousel-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .carousel-indicator.active {
+            background-color: white;
+        }
+        
+        .map-container {
+            width: 100%;
+            height: 400px;
+            margin-top: 2rem;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        
+        footer {
+            background-color: var(--dark-blue);
+            color: var(--white);
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">Técnico Litoral</a>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Serviços</a></li>
+                    <li><a href="#gallery">Galeria</a></li>
+                    <li><a href="#about">Sobre</a></li>
+                    <li><a href="#contact">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Segurança Eletrônica e Automação Profissional</h1>
+            <p>Soluções completas em segurança eletrônica, automação de portões e controle de acesso para sua residência ou empresa.</p>
+            <a href="#contact" class="btn">Entre em Contato</a>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Nossos Serviços</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3>Instalação de Câmeras</h3>
+                    <p>Sistemas de CFTV profissionais para monitoramento em tempo real e gravação de alta qualidade.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-door-open"></i>
+                    </div>
+                    <h3>Automatização de Portões</h3>
+                    <p>Soluções modernas para automatização de portões residenciais e industriais.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-id-card"></i>
+                    </div>
+                    <h3>Controle de Acesso</h3>
+                    <p>Sistemas de controle de acesso com tecnologia avançada para maior segurança.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Segurança Eletrônica</h3>
+                    <p>Alarmes, sensores e equipamentos de proteção para sua tranquilidade.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2 class="section-title">Galeria de Fotos</h2>
+            
+            <div class="carousel">
+                <div class="carousel-container">
+                    <!-- Imagens serão adicionadas via JavaScript -->
+                </div>
+                <button class="carousel-button prev">&#10094;</button>
+                <button class="carousel-button next">&#10095;</button>
+                <div class="carousel-indicators">
+                    <!-- Indicadores serão adicionados via JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">Sobre Nós</h2>
+            <div class="about-content">
+                <div>
+                    <p>A Técnico Litoral é uma empresa especializada em soluções de segurança eletrônica e automação, atendendo clientes residenciais e empresariais na região do litoral.</p>
+                    <p>Contamos com profissionais experientes e qualificados, comprometidos em oferecer serviços de alta qualidade e atendimento personalizado.</p>
+                    <p>Nossa missão é proporcionar tranquilidade e segurança através de soluções tecnológicas modernas e eficientes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Entre em Contato</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <p>(XX) XXXXX-XXXX</p>
+                    <a href="https://wa.me/55XXXXXXXXXXX" target="_blank" class="whatsapp-link">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <a href="mailto:contato@tecnicolitoral.com.br" class="email-link">contato@tecnicolitoral.com.br</a>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <p>Barra do Shay, São Sebastião - São Paulo</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Técnico Litoral - Todos os direitos reservados</p>
+        </div>
+    </footer>
+
+    <script>
+        // Função para carregar as configurações
+        async function loadConfig() {
+            try {
+                console.log('Iniciando carregamento de configurações');
+                const response = await fetch('/api/config');
+                if (!response.ok) {
+                    throw new Error('Erro ao carregar configurações');
+                }
+                
+                const config = await response.json();
+                console.log('Configurações carregadas:', config);
+                
+                // Atualizar informações de contato
+                document.querySelector('.contact-item:nth-child(1) p').textContent = config.contact.phone;
+                document.querySelector('.contact-item:nth-child(1) a').href = `https://wa.me/${config.contact.whatsapp}`;
+                
+                document.querySelector('.contact-item:nth-child(2) a').textContent = config.contact.email;
+                document.querySelector('.contact-item:nth-child(2) a').href = `mailto:${config.contact.email}`;
+                
+                document.querySelector('.contact-item:nth-child(3) p').textContent = config.contact.address;
+                
+                // Atualizar o mapa com o endereço codificado para URL
+                const mapAddress = encodeURIComponent(config.contact.address);
+                const mapContainer = document.querySelector('.map-container iframe');
+                if (mapContainer) {
+                    mapContainer.src = `https://maps.google.com/maps?q=${mapAddress}&amp;t=m&amp;z=12&amp;ie=UTF8&amp;iwloc=&amp;output=embed`;
+                } else {
+                    console.log('Elemento do mapa não encontrado');
+                }
+                
+                // Atualizar texto sobre a empresa
+                const aboutParagraph = document.querySelector('.about-content p:nth-child(1)');
+                if (aboutParagraph) {
+                    aboutParagraph.textContent = config.about.text;
+                } else {
+                    console.log('Elemento do texto sobre a empresa não encontrado');
+                }
+                
+                // Verificar se existem imagens nas configurações
+                let images = config.gallery && config.gallery.images ? config.gallery.images : [];
+                console.log('Imagens das configurações:', images);
+                
+                // Se não houver imagens nas configurações, verificar a API de imagens
+                if (!images.length) {
+                    console.log('Nenhuma imagem encontrada nas configurações, verificando API de imagens...');
+                    try {
+                        const imagesResponse = await fetch('/api/images');
+                        if (imagesResponse.ok) {
+                            const imagesData = await imagesResponse.json();
+                            if (imagesData.images && imagesData.images.length) {
+                                console.log('Imagens encontradas na API:', imagesData.images);
+                                images = imagesData.images;
+                            }
+                        }
+                    } catch (imageError) {
+                        console.error('Erro ao buscar imagens da API:', imageError);
+                    }
+                }
+                
+                // Se ainda não houver imagens, verificar o status das imagens
+                if (!images.length) {
+                    console.log('Tentando verificar o status das imagens no sistema...');
+                    try {
+                        const statusResponse = await fetch('/api/image-status');
+                        if (statusResponse.ok) {
+                            const statusData = await statusResponse.json();
+                            console.log('Status das imagens:', statusData);
+                            
+                            // Usar arquivos físicos se disponíveis
+                            if (statusData.physical_files && statusData.physical_files.length) {
+                                console.log('Usando arquivos físicos encontrados:', statusData.physical_files);
+                                images = statusData.physical_files;
+                            }
+                        }
+                    } catch (statusError) {
+                        console.error('Erro ao verificar status das imagens:', statusError);
+                    }
+                }
+                
+                // Carregar galeria de imagens para o carrossel
+                console.log('Imagens finais para carregar no carrossel:', images);
+                loadCarousel(images);
+            } catch (error) {
+                console.error('Erro ao carregar configurações:', error);
+            }
+        }
+        
+        // Carregar imagens no carrossel
+        function loadCarousel(images) {
+            console.log("Carregando carrossel com imagens:", images);
+            const carouselContainer = document.querySelector('.carousel-container');
+            const indicatorsContainer = document.querySelector('.carousel-indicators');
+            
+            // Se não houver imagens, mostrar placeholder
+            if (!images || images.length === 0) {
+                console.log("Nenhuma imagem para exibir no carrossel");
+                carouselContainer.innerHTML = `
+                    <div class="carousel-slide">
+                        <img src="placeholder.jpg" alt="Sem imagens disponíveis">
+                    </div>
+                `;
+                indicatorsContainer.innerHTML = '';
+                return;
+            }
+            
+            // Limpar conteúdo existente
+            carouselContainer.innerHTML = '';
+            indicatorsContainer.innerHTML = '';
+            
+            // Adicionar cada imagem como um slide
+            images.forEach((image, index) => {
+                console.log(`Adicionando imagem ${index + 1}:`, image);
+                const slide = document.createElement('div');
+                slide.className = 'carousel-slide';
+                slide.innerHTML = `<img src="/uploads/${image}" alt="Imagem ${index + 1}">`;
+                carouselContainer.appendChild(slide);
+                
+                // Adicionar indicador
+                const indicator = document.createElement('div');
+                indicator.className = 'carousel-indicator' + (index === 0 ? ' active' : '');
+                indicator.dataset.index = index;
+                indicator.addEventListener('click', () => {
+                    currentSlide = index;
+                    updateCarousel();
+                });
+                indicatorsContainer.appendChild(indicator);
+            });
+            
+            // Inicializar o carrossel
+            console.log("Inicializando carrossel com", images.length, "imagens");
+            initCarousel();
+        }
+        
+        // Variáveis para controle do carrossel
+        let currentSlide = 0;
+        let carouselInterval;
+        
+        // Inicializar carrossel
+        function initCarousel() {
+            const slides = document.querySelectorAll('.carousel-slide');
+            if (!slides.length) return;
+            
+            // Configurar botões de navegação
+            document.querySelector('.carousel-button.prev').addEventListener('click', () => {
+                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                updateCarousel();
+                resetCarouselInterval();
+            });
+            
+            document.querySelector('.carousel-button.next').addEventListener('click', () => {
+                currentSlide = (currentSlide + 1) % slides.length;
+                updateCarousel();
+                resetCarouselInterval();
+            });
+            
+            // Iniciar rotação automática
+            startCarouselInterval();
+        }
+        
+        // Atualizar a posição do carrossel
+        function updateCarousel() {
+            const container = document.querySelector('.carousel-container');
+            container.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            // Atualizar indicadores
+            const indicators = document.querySelectorAll('.carousel-indicator');
+            indicators.forEach((indicator, index) => {
+                if (index === currentSlide) {
+                    indicator.classList.add('active');
+                } else {
+                    indicator.classList.remove('active');
+                }
+            });
+        }
+        
+        // Iniciar intervalo para rotação automática
+        function startCarouselInterval() {
+            carouselInterval = setInterval(() => {
+                const slides = document.querySelectorAll('.carousel-slide');
+                if (!slides.length) return;
+                
+                currentSlide = (currentSlide + 1) % slides.length;
+                updateCarousel();
+            }, 5000); // Mudar slide a cada 5 segundos
+        }
+        
+        // Resetar intervalo quando o usuário interage com o carrossel
+        function resetCarouselInterval() {
+            clearInterval(carouselInterval);
+            startCarouselInterval();
+        }
+        
+        // Carregar configurações quando a página carregar
+        document.addEventListener('DOMContentLoaded', loadConfig);
+    </script>
+</body>
+</html>

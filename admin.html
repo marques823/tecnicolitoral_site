@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Administrativo - Técnico Litoral</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --success-color: #2ecc71;
+            --danger-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: var(--light-color);
+            color: var(--dark-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .admin-panel {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .section {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .section h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .btn-primary {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #2980b9;
+        }
+
+        .btn-danger {
+            background-color: var(--danger-color);
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background-color: #c0392b;
+        }
+
+        .gallery-preview {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            aspect-ratio: 1;
+            overflow: hidden;
+            border-radius: 4px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-item .delete-btn {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background-color: rgba(231, 76, 60, 0.8);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .upload-area {
+            border: 2px dashed #ddd;
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            cursor: pointer;
+        }
+
+        .upload-area:hover {
+            border-color: var(--secondary-color);
+        }
+
+        .message {
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+            display: none;
+            overflow-y: auto;
+            max-height: 300px;
+        }
+
+        .message.success {
+            background-color: #d4edda;
+            color: #155724;
+            display: block;
+        }
+
+        .message.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            display: block;
+        }
+
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: var(--light-color);
+        }
+
+        .login-box {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .login-box h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .logout-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: transparent;
+            color: white;
+            border: 1px solid white;
+            border-radius: 4px;
+            padding: 0.4rem 0.8rem;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .logout-btn:hover {
+            background-color: white;
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <div id="loginContainer" class="login-container">
+        <div class="login-box">
+            <h2>Login Administrativo</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Usuário</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Senha</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Entrar</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="adminPanel" class="hidden">
+        <header>
+            <h1>Painel Administrativo - Técnico Litoral</h1>
+            <button id="logoutBtn" class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i> Sair
+            </button>
+        </header>
+
+        <div class="container">
+            <div class="admin-panel">
+                <div class="section">
+                    <h2>Informações de Contato</h2>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="phone">Telefone</label>
+                            <input type="text" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="whatsapp">WhatsApp</label>
+                            <input type="text" id="whatsapp" name="whatsapp" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Endereço</label>
+                            <input type="text" id="address" name="address" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Salvar</button>
+                    </form>
+                </div>
+
+                <div class="section">
+                    <h2>Sobre a Empresa</h2>
+                    <form id="aboutForm">
+                        <div class="form-group">
+                            <label for="aboutText">Texto</label>
+                            <textarea id="aboutText" name="aboutText" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="admin-password">Senha do Administrador:</label>
+                            <input type="password" id="admin-password" placeholder="Nova senha (deixe em branco para manter a atual)">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Salvar</button>
+                    </form>
+                </div>
+
+                <div class="section">
+                    <h2>Galeria de Fotos</h2>
+                    <div id="message" class="message"></div>
+                    <div class="upload-area" id="uploadArea">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>Arraste imagens aqui ou clique para selecionar</p>
+                        <input type="file" id="fileInput" style="display: none;" accept="image/*" multiple>
+                    </div>
+                    <div class="gallery-preview" id="galleryPreview">
+                        <!-- As imagens serão adicionadas dinamicamente -->
+                    </div>
+                    <div class="form-group" style="margin-top: 20px; text-align: center;">
+                        <button type="button" id="checkDb" class="btn btn-primary">
+                            <i class="fas fa-database"></i> Verificar Banco de Dados
+                        </button>
+                        <button type="button" id="repairDb" class="btn btn-danger">
+                            <i class="fas fa-wrench"></i> Reparar Banco de Dados
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="message" id="message"></div>
+        </div>
+    </div>
+
+    <script>
+        let authToken = null;
+
+        // Função para fazer login
+        async function login(username, password) {
+            try {
+                console.log('Tentando login com:', username, password);
+                
+                const response = await fetch('/api/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ username, password })
+                });
+
+                console.log('Resposta do servidor:', response.status, response.statusText);
+
+                if (response.ok) {
+                    console.log('Login bem-sucedido');
+                    document.getElementById('loginContainer').classList.add('hidden');
+                    document.getElementById('adminPanel').classList.remove('hidden');
+                    loadConfig();
+                } else {
+                    const error = await response.json();
+                    console.log('Login falhou:', error);
+                    throw new Error(error.message || 'Credenciais inválidas');
+                }
+            } catch (error) {
+                console.error('Erro de login:', error);
+                alert('Erro ao fazer login: ' + error.message);
+            }
+        }
+
+        // Função para fazer requisições autenticadas
+        async function fetchWithAuth(url, options = {}) {
+            try {
+                const response = await fetch(url, {
+                    ...options,
+                    credentials: 'include'  // Incluir cookies na requisição
+                });
+                
+                if (response.status === 401) {
+                    console.log("Não autenticado, redirecionando para login");
+                    document.getElementById('loginContainer').classList.remove('hidden');
+                    document.getElementById('adminPanel').classList.add('hidden');
+                    return response; // Retornar a resposta para verificar status no código de chamada
+                }
+                
+                return response;
+            } catch (error) {
+                console.error("Erro na requisição:", error);
+                throw error;
+            }
+        }
+
+        // Carregar configuração
+        async function loadConfig() {
+            try {
+                console.log('Carregando configurações...');
+                const response = await fetchWithAuth('/api/config');
+                
+                if (response.status === 401) {
+                    console.log('Não autenticado ao carregar configurações');
+                    return; // A função fetchWithAuth já tratou o redirecionamento
+                }
+                
+                if (!response.ok) {
+                    throw new Error(`Erro ao carregar configurações: ${response.status}`);
+                }
+                
+                const config = await response.json();
+                console.log('Configurações carregadas:', config);
+                
+                // Preencher formulários
+                document.getElementById('phone').value = config.contact.phone;
+                document.getElementById('whatsapp').value = config.contact.whatsapp;
+                document.getElementById('email').value = config.contact.email;
+                document.getElementById('address').value = config.contact.address;
+                document.getElementById('aboutText').value = config.about.text;
+                
+                // Carregar galeria
+                loadGallery(config.gallery.images);
+                
+                // Verificar consistência do banco de dados
+                checkDatabaseConsistency();
+            } catch (error) {
+                console.error('Erro ao carregar configurações:', error);
+                showMessage('Erro ao carregar configurações: ' + error.message, 'error');
+            }
+        }
+
+        // Carregar galeria
+        function loadGallery(images) {
+            const galleryPreview = document.getElementById('galleryPreview');
+            galleryPreview.innerHTML = '';
+            
+            images.forEach(image => {
+                const item = document.createElement('div');
+                item.className = 'gallery-item';
+                item.innerHTML = `
+                    <img src="/uploads/${image}" alt="Imagem da galeria">
+                    <button class="delete-btn" onclick="deleteImage('${image}')">
+                        <i class="fas fa-times"></i>
+                    </button>
+                `;
+                galleryPreview.appendChild(item);
+            });
+        }
+
+        // Salvar configuração
+        async function saveConfig(formData) {
+            try {
+                const response = await fetchWithAuth('/api/config', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                if (response.status === 401) {
+                    window.location.href = '/login';
+                    return;
+                }
+                
+                if (response.ok) {
+                    showMessage('Configuração salva com sucesso!', 'success');
+                } else {
+                    throw new Error('Erro ao salvar configuração');
+                }
+            } catch (error) {
+                showMessage(error.message, 'error');
+            }
+        }
+
+        // Upload de imagens
+        async function uploadImages(files) {
+            const formData = new FormData();
+            Array.from(files).forEach(file => {
+                formData.append('file', file);
+            });
+
+            try {
+                const response = await fetchWithAuth('/api/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                if (response.status === 401) {
+                    window.location.href = '/login';
+                    return;
+                }
+                
+                if (response.ok) {
+                    showMessage('Imagens enviadas com sucesso!', 'success');
+                    loadConfig();
+                } else {
+                    throw new Error('Erro ao enviar imagens');
+                }
+            } catch (error) {
+                showMessage(error.message, 'error');
+            }
+        }
+
+        // Deletar imagem
+        async function deleteImage(filename) {
+            if (confirm('Tem certeza que deseja excluir esta imagem?')) {
+                try {
+                    console.log('Excluindo imagem:', filename);
+                    const response = await fetchWithAuth(`/api/delete/${filename}`, {
+                        method: 'DELETE'
+                    });
+                    
+                    if (response.status === 401) {
+                        document.getElementById('loginContainer').classList.remove('hidden');
+                        document.getElementById('adminPanel').classList.add('hidden');
+                        return;
+                    }
+                    
+                    if (response.ok) {
+                        showMessage('Imagem excluída com sucesso!', 'success');
+                        
+                        // Recarregar configuração para atualizar a galeria
+                        await loadConfig();
+                        
+                        // Verificar se a imagem realmente foi removida do banco de dados
+                        const dbStatusResponse = await fetchWithAuth('/api/db-status');
+                        if (dbStatusResponse.ok) {
+                            const dbStatus = await dbStatusResponse.json();
+                            console.log('Estado do banco de dados após exclusão:', dbStatus);
+                            
+                            if (dbStatus.images.includes(filename)) {
+                                console.error('A imagem ainda está presente no banco de dados!');
+                                showMessage('Atenção: A imagem foi excluída, mas ainda está referenciada no banco de dados.', 'error');
+                            } else {
+                                console.log('Imagem excluída com sucesso do banco de dados.');
+                            }
+                            
+                            if (dbStatus.missing_files.length > 0) {
+                                console.warn('Há arquivos referenciados no banco mas ausentes no sistema de arquivos:', 
+                                            dbStatus.missing_files);
+                            }
+                        }
+                    } else {
+                        throw new Error('Erro ao excluir imagem');
+                    }
+                } catch (error) {
+                    console.error('Erro ao excluir imagem:', error);
+                    showMessage(error.message, 'error');
+                }
+            }
+        }
+
+        // Mostrar mensagem
+        function showMessage(text, type) {
+            const message = document.getElementById('message');
+            
+            // Verificar se o texto contém HTML
+            if (text.includes('<')) {
+                message.innerHTML = text;
+            } else {
+                message.textContent = text;
+            }
+            
+            message.className = `message ${type}`;
+            
+            // Garantir que a mensagem esteja visível
+            message.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            
+            // Se não for uma mensagem de erro, esconder após alguns segundos
+            if (type !== 'error') {
+                setTimeout(() => {
+                    message.className = 'message';
+                }, 5000);
+            }
+        }
+
+        // Event Listeners
+        document.getElementById('loginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            login(username, password);
+        });
+
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const formData = {
+                contact: {
+                    phone: document.getElementById('phone').value,
+                    whatsapp: document.getElementById('whatsapp').value,
+                    email: document.getElementById('email').value,
+                    address: document.getElementById('address').value
+                }
+            };
+            saveConfig(formData);
+        });
+
+        document.getElementById('aboutForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const formData = {
+                about: {
+                    text: document.getElementById('aboutText').value
+                },
+                admin: {
+                    password: document.getElementById('admin-password').value
+                }
+            };
+            saveConfig(formData);
+        });
+
+        document.getElementById('uploadArea').addEventListener('click', () => {
+            document.getElementById('fileInput').click();
+        });
+
+        document.getElementById('fileInput').addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                uploadImages(e.target.files);
+            }
+        });
+
+        // Drag and drop
+        const uploadArea = document.getElementById('uploadArea');
+        
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            uploadArea.addEventListener(eventName, preventDefaults, false);
+        });
+
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            uploadArea.addEventListener(eventName, highlight, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            uploadArea.addEventListener(eventName, unhighlight, false);
+        });
+
+        function highlight() {
+            uploadArea.style.borderColor = 'var(--secondary-color)';
+        }
+
+        function unhighlight() {
+            uploadArea.style.borderColor = '#ddd';
+        }
+
+        uploadArea.addEventListener('drop', (e) => {
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                uploadImages(files);
+            }
+        });
+
+        document.getElementById('checkDb').addEventListener('click', async () => {
+            try {
+                const response = await fetchWithAuth('/api/db-status');
+                if (response.ok) {
+                    const status = await response.json();
+                    console.log('Estado do banco de dados:', status);
+                    
+                    let message = `
+                        <strong>Estado do Banco de Dados:</strong><br>
+                        - Imagens no banco: ${status.images_count}<br>
+                        - Arquivos existentes: ${status.existing_files.length}<br>
+                        - Arquivos ausentes: ${status.missing_files.length}<br>
+                    `;
+                    
+                    if (status.missing_files.length > 0) {
+                        message += `<br><strong>Arquivos ausentes:</strong><br>`;
+                        status.missing_files.forEach(file => {
+                            message += `- ${file}<br>`;
+                        });
+                        
+                        message += `<br>Use o botão "Reparar Banco de Dados" para corrigir estas inconsistências.`;
+                    }
+                    
+                    showMessage(message, status.missing_files.length > 0 ? 'error' : 'success');
+                }
+            } catch (error) {
+                showMessage('Erro ao verificar banco de dados: ' + error.message, 'error');
+            }
+        });
+        
+        document.getElementById('repairDb').addEventListener('click', async () => {
+            if (confirm('Tem certeza que deseja reparar o banco de dados? Isso removerá registros de imagens que não existem e adicionará imagens que estão no sistema de arquivos mas não no banco.')) {
+                try {
+                    const response = await fetchWithAuth('/api/repair-db', {
+                        method: 'POST'
+                    });
+                    
+                    if (response.ok) {
+                        const result = await response.json();
+                        console.log('Resultado da reparação:', result);
+                        
+                        let message = `
+                            <strong>Banco de dados reparado com sucesso!</strong><br>
+                            <br>
+                            <strong>Correções realizadas:</strong><br>
+                            - Registros removidos: ${result.corrections.corrections.removed_from_db.length}<br>
+                            - Registros adicionados: ${result.corrections.corrections.added_to_db.length}<br>
+                            <br>
+                            <strong>Novo estado:</strong><br>
+                            - Imagens no banco: ${result.new_status.images_count}<br>
+                        `;
+                        
+                        showMessage(message, 'success');
+                        
+                        // Recarregar a galeria
+                        loadConfig();
+                    } else {
+                        throw new Error('Erro ao reparar banco de dados');
+                    }
+                } catch (error) {
+                    showMessage('Erro ao reparar banco de dados: ' + error.message, 'error');
+                }
+            }
+        });
+
+        // Verificar consistência do banco de dados
+        async function checkDatabaseConsistency() {
+            try {
+                const response = await fetchWithAuth('/api/db-status');
+                if (response.ok) {
+                    const status = await response.json();
+                    
+                    // Se houver inconsistências, mostrar aviso
+                    if (status.missing_files.length > 0) {
+                        console.warn('Inconsistências detectadas no banco de dados:', status.missing_files);
+                        showMessage(`
+                            <strong>Atenção!</strong> Foram detectadas inconsistências no banco de dados.<br>
+                            Há ${status.missing_files.length} imagens referenciadas no banco mas ausentes no sistema de arquivos.<br>
+                            <br>
+                            Clique em "Verificar Banco de Dados" para ver detalhes ou em "Reparar Banco de Dados" para corrigir automaticamente.
+                        `, 'error');
+                    }
+                }
+            } catch (error) {
+                console.error('Erro ao verificar consistência do banco de dados:', error);
+            }
+        }
+
+        // Função para fazer logout
+        async function logout() {
+            try {
+                const response = await fetch('/api/logout', {
+                    method: 'POST',
+                    credentials: 'include'
+                });
+                
+                if (response.ok) {
+                    document.getElementById('loginContainer').classList.remove('hidden');
+                    document.getElementById('adminPanel').classList.add('hidden');
+                    document.getElementById('username').value = '';
+                    document.getElementById('password').value = '';
+                } else {
+                    throw new Error('Erro ao fazer logout');
+                }
+            } catch (error) {
+                console.error('Erro de logout:', error);
+                alert('Erro ao fazer logout: ' + error.message);
+            }
+        }
+
+        // Carregar configuração ao iniciar
+        document.addEventListener('DOMContentLoaded', loadConfig);
+
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            logout();
+        });
+    </script>
+</body>
+</html> 

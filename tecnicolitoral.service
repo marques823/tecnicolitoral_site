@@ -1,0 +1,13 @@
+[Unit]
+Description=Servidor Web Técnico Litoral
+After=network.target
+
+[Service]
+User=tiago
+WorkingDirectory=/home/tiago/tecnicolitoral_site
+ExecStart=/usr/bin/python3 /home/tiago/tecnicolitoral_site/server.py --port 9998 --address 0.0.0.0
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target 

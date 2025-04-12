@@ -1,0 +1,18 @@
+{
+    "contact": {
+        "phone": "(12) 99741-3821",
+        "whatsapp": "5512997413821",
+        "email": "contato@tecnicolitoral.com.br",
+        "address": "Barra do Shay, S\u00e3o Sebasti\u00e3o - S\u00e3o Paulo"
+    },
+    "admin": {
+        "password": "admin123"
+    },
+    "gallery": {
+        "images": [
+            "64500e65-4e10-4bcb-87f7-ba77d481b833.jpg",
+            "a20dfe20-1599-4866-9df5-01a52b435d0a.jpg",
+            "a603e921-5b18-4d2b-bd98-a3ecd3ec6f1c.jpg"
+        ]
+    }
+}

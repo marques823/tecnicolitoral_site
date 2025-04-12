@@ -1,0 +1,56 @@
+# Banco de dados SQLite
+*.db
+*.sqlite
+*.sqlite3
+
+# Arquivos de configuração com informações sensíveis
+instance/
+
+# Arquivos de mídia enviados pelos usuários
+uploads/*
+!uploads/.gitkeep
+
+# Diretório de sessão do Flask
+flask_session/
+
+# Arquivos temporários do Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Arquivos de log
+*.log
+
+# Arquivos de ambiente
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Arquivos do sistema operacional
+.DS_Store
+Thumbs.db
+
+# Arquivos de IDE e editores
+.idea/
+.vscode/
+*.swp
+*.swo
