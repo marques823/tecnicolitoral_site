@@ -177,6 +177,69 @@ Para usar este sistema em um ambiente de produção, recomendamos as seguintes c
    sudo systemctl start tecnicolitoral.service
    ```
 
+### Usando Docker (Recomendado)
+
+A forma mais simples de implantar o sistema é usando Docker e Docker Compose, que garantem um ambiente consistente e isolado.
+
+#### Pré-requisitos
+- [Docker](https://docs.docker.com/get-docker/)
+- [Docker Compose](https://docs.docker.com/compose/install/)
+
+#### Passos para Instalação
+
+1. **Clone o repositório**:
+   ```bash
+   git clone https://github.com/marques823/tecnicolitoral_site.git
+   cd tecnicolitoral_site
+   ```
+
+2. **Execute com Docker Compose**:
+   ```bash
+   docker-compose up -d
+   ```
+
+3. **Acesse o sistema**:
+   - Front-end (site): http://seu-ip:9998
+   - Painel administrativo: http://seu-ip:9998/admin
+   - Usuário padrão: admin
+   - Senha padrão: admin123 (altere-a imediatamente no painel administrativo)
+
+4. **Verificar logs**:
+   ```bash
+   docker-compose logs -f
+   ```
+
+5. **Parar o sistema**:
+   ```bash
+   docker-compose down
+   ```
+
+#### Volumes Persistentes
+
+O Docker Compose configura os seguintes volumes persistentes:
+- `./uploads`: Armazena as imagens enviadas
+- `./instance`: Armazena chaves e configurações sensíveis
+- `db-data`: Volume interno para o banco de dados
+
+#### Manutenção do Container
+
+Para atualizar o sistema após alterações no código:
+```bash
+git pull
+docker-compose build
+docker-compose down
+docker-compose up -d
+```
+
+Para fazer backup dos dados:
+```bash
+# Backup do banco de dados
+docker exec tecnicolitoral-web bash -c "sqlite3 /app/data/tecnicolitoral.db .dump" > backup_$(date +%Y%m%d).sql
+
+# Backup das imagens
+cp -r uploads uploads_backup_$(date +%Y%m%d)
+```
+
 ### Segurança em Produção
 
 - Altere a senha padrão do administrador imediatamente
