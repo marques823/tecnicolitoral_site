@@ -3,6 +3,7 @@ import os
 from werkzeug.security import generate_password_hash, check_password_hash
 from functools import wraps
 import datetime
+import shutil
 
 from tecnicolitoral.database.db import init_db, migrate_from_json, load_config, save_config_value, get_db_connection, get_images, check_db_consistency
 from tecnicolitoral.database.image_handler import create_upload_dirs, process_image, delete_image
@@ -13,6 +14,7 @@ ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 app = Flask(__name__)
 app.secret_key = 'tecnicolitoral_secret_key'  # Chave secreta para sessões
 app.config['UPLOAD_FOLDER'] = os.path.join(ROOT_DIR, 'uploads')
+app.config['STATIC_FOLDER'] = os.path.join(ROOT_DIR, 'static')
 app.config['PERMANENT_SESSION_LIFETIME'] = datetime.timedelta(days=1)
 app.config['MAX_IMAGE_SIZE'] = (1200, 1200)  # Tamanho máximo das imagens (largura, altura)
 app.config['THUMBNAIL_SIZE'] = (300, 300)    # Tamanho das miniaturas
@@ -20,6 +22,8 @@ app.config['QUALITY'] = 85                   # Qualidade de compressão JPEG (0-
 
 # Inicializar diretórios e banco de dados
 create_upload_dirs(app.config['UPLOAD_FOLDER'])
+# Criar diretório static/img se não existir
+os.makedirs(os.path.join(app.config['STATIC_FOLDER'], 'img'), exist_ok=True)
 init_db()
 migrate_from_json()
 
@@ -130,6 +134,85 @@ def upload_file():
             return jsonify({'status': 'error', 'message': error}), 400
         
         return jsonify({'status': 'success', 'filename': filename})
+
+@app.route('/api/upload-logo', methods=['POST'])
+@login_required
+def upload_logo():
+    if 'file' not in request.files:
+        return jsonify({'status': 'error', 'message': 'No file uploaded'}), 400
+    
+    file = request.files['file']
+    if file.filename == '':
+        return jsonify({'status': 'error', 'message': 'No file selected'}), 400
+    
+    if file:
+        # Salvar o arquivo no diretório static/img com o nome fixo 'logo.png'
+        img_dir = os.path.join(app.config['STATIC_FOLDER'], 'img')
+        os.makedirs(img_dir, exist_ok=True)
+        
+        file_path = os.path.join(img_dir, 'logo.png')
+        file.save(file_path)
+        
+        # Atualizar configuração
+        save_config_value('logo_image', 'logo.png')
+        
+        return jsonify({
+            'status': 'success', 
+            'filename': 'logo.png',
+            'url': f'/static/img/logo.png?t={datetime.datetime.now().timestamp()}'
+        })
+
+@app.route('/api/upload-favicon', methods=['POST'])
+@login_required
+def upload_favicon():
+    if 'file' not in request.files:
+        return jsonify({'status': 'error', 'message': 'No file uploaded'}), 400
+    
+    file = request.files['file']
+    if file.filename == '':
+        return jsonify({'status': 'error', 'message': 'No file selected'}), 400
+    
+    if file:
+        # Salvar o arquivo no diretório static/img com o nome fixo 'favicon.ico'
+        img_dir = os.path.join(app.config['STATIC_FOLDER'], 'img')
+        os.makedirs(img_dir, exist_ok=True)
+        
+        # Salvar como .ico
+        file_path_ico = os.path.join(img_dir, 'favicon.ico')
+        file.save(file_path_ico)
+        
+        # Também salvar como .png para maior compatibilidade
+        file.seek(0)  # Voltar para o início do arquivo para poder reler
+        file_path_png = os.path.join(img_dir, 'favicon.png')
+        file.save(file_path_png)
+        
+        # Criar cópias na raiz
+        shutil.copy2(file_path_ico, os.path.join(ROOT_DIR, 'favicon.ico'))
+        shutil.copy2(file_path_png, os.path.join(ROOT_DIR, 'favicon.png'))
+        
+        # Atualizar configuração
+        save_config_value('favicon_image', 'favicon.png')
+        
+        return jsonify({
+            'status': 'success', 
+            'filename': 'favicon.png',
+            'url': f'/static/img/favicon.png?t={datetime.datetime.now().timestamp()}'
+        })
+
+@app.route('/static/<path:filename>')
+def serve_static(filename):
+    print(f"Tentando servir arquivo estático: {filename}")
+    print(f"Diretório static: {app.config['STATIC_FOLDER']}")
+    print(f"Caminho completo: {os.path.join(app.config['STATIC_FOLDER'], filename)}")
+    return send_from_directory(app.config['STATIC_FOLDER'], filename)
+
+@app.route('/static/img/<path:filename>')
+def serve_static_img(filename):
+    img_dir = os.path.join(app.config['STATIC_FOLDER'], 'img')
+    print(f"Tentando servir imagem: {filename}")
+    print(f"Diretório de imagens: {img_dir}")
+    print(f"Caminho completo: {os.path.join(img_dir, filename)}")
+    return send_from_directory(img_dir, filename)
 
 @app.route('/api/delete/<filename>', methods=['DELETE'])
 @login_required

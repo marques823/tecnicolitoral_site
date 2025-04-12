@@ -135,7 +135,9 @@ def load_config():
         },
         'admin': {
             'password': ''
-        }
+        },
+        'logo_image': '',
+        'favicon_image': ''
     }
     
     # Preencher com os valores do banco de dados
@@ -155,6 +157,10 @@ def load_config():
             config['about']['text'] = value
         elif key == 'admin_password':
             config['admin']['password'] = value
+        elif key == 'logo_image':
+            config['logo_image'] = value
+        elif key == 'favicon_image':
+            config['favicon_image'] = value
     
     return config
 

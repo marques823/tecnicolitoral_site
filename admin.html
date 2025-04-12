@@ -3,16 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicons com caminho absoluto -->
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="shortcut icon" href="favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="favicon.png">
+    <meta name="msapplication-TileImage" content="favicon.png">
     <title>Painel Administrativo - Técnico Litoral</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
+            --primary-color: #037394;
+            --secondary-color: #04a0c6;
             --success-color: #2ecc71;
             --danger-color: #e74c3c;
             --light-color: #ecf0f1;
-            --dark-color: #2c3e50;
+            --dark-color: #025e78;
         }
 
         * {
@@ -40,6 +45,7 @@
             padding: 1rem;
             text-align: center;
             margin-bottom: 2rem;
+            position: relative;
         }
 
         .admin-panel {
@@ -228,6 +234,34 @@
             background-color: white;
             color: var(--primary-color);
         }
+
+        .preview-container {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 1rem;
+            margin-top: 0.5rem;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .preview-container img {
+            max-width: 100%;
+            max-height: 100px;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
     </style>
 </head>
 <body>
@@ -257,6 +291,8 @@
         </header>
 
         <div class="container">
+            <div id="message" class="message"></div>
+            
             <div class="admin-panel">
                 <div class="section">
                     <h2>Informações de Contato</h2>
@@ -297,28 +333,49 @@
                 </div>
 
                 <div class="section">
-                    <h2>Galeria de Fotos</h2>
-                    <div id="message" class="message"></div>
-                    <div class="upload-area" id="uploadArea">
-                        <i class="fas fa-cloud-upload-alt"></i>
-                        <p>Arraste imagens aqui ou clique para selecionar</p>
-                        <input type="file" id="fileInput" style="display: none;" accept="image/*" multiple>
+                    <h2>Identidade Visual</h2>
+                    <div class="two-column">
+                        <div class="form-group">
+                            <label>Logo do Site</label>
+                            <div id="logoUploadArea" class="upload-area">
+                                <p><i class="fas fa-cloud-upload-alt"></i> Arraste e solte a logo aqui</p>
+                                <input type="file" id="logoInput" accept="image/*" style="display: none;">
+                            </div>
+                            <div id="logoPreview" class="preview-container">
+                                <!-- Preview da logo -->
+                            </div>
+                            <small>Formato PNG com fundo transparente recomendado</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Favicon</label>
+                            <div id="faviconUploadArea" class="upload-area">
+                                <p><i class="fas fa-cloud-upload-alt"></i> Arraste e solte o favicon aqui</p>
+                                <input type="file" id="faviconInput" accept="image/x-icon,image/png" style="display: none;">
+                            </div>
+                            <div id="faviconPreview" class="preview-container">
+                                <!-- Preview do favicon -->
+                            </div>
+                            <small>Formatos .ico ou .png, tamanho 32x32 pixels</small>
+                        </div>
                     </div>
-                    <div class="gallery-preview" id="galleryPreview">
-                        <!-- As imagens serão adicionadas dinamicamente -->
+                </div>
+
+                <div class="section">
+                    <h2>Gerenciamento de Imagens</h2>
+                    <div id="uploadArea" class="upload-area">
+                        <p><i class="fas fa-cloud-upload-alt"></i> Arraste e solte imagens aqui ou clique para selecionar</p>
+                        <input type="file" id="fileInput" multiple accept="image/*" style="display: none;">
                     </div>
-                    <div class="form-group" style="margin-top: 20px; text-align: center;">
-                        <button type="button" id="checkDb" class="btn btn-primary">
-                            <i class="fas fa-database"></i> Verificar Banco de Dados
-                        </button>
-                        <button type="button" id="repairDb" class="btn btn-danger">
-                            <i class="fas fa-wrench"></i> Reparar Banco de Dados
-                        </button>
+                    <div id="galleryPreview" class="gallery-preview">
+                        <!-- As imagens serão adicionadas dinamicamente aqui -->
+                    </div>
+                    <div class="actions">
+                        <button id="checkDb" class="btn btn-primary"><i class="fas fa-database"></i> Verificar Banco de Dados</button>
+                        <button id="repairDb" class="btn btn-primary"><i class="fas fa-wrench"></i> Reparar Banco de Dados</button>
                     </div>
                 </div>
             </div>
-
-            <div class="message" id="message"></div>
         </div>
     </div>
 
@@ -402,6 +459,17 @@
                 document.getElementById('email').value = config.contact.email;
                 document.getElementById('address').value = config.contact.address;
                 document.getElementById('aboutText').value = config.about.text;
+                
+                // Carregar logo e favicon se existirem
+                if (config.logo_image) {
+                    const logoPreview = document.getElementById('logoPreview');
+                    logoPreview.innerHTML = `<img src="/static/img/${config.logo_image}?t=${Date.now()}" alt="Logo" style="max-height: 100px;">`;
+                }
+                
+                if (config.favicon_image) {
+                    const faviconPreview = document.getElementById('faviconPreview');
+                    faviconPreview.innerHTML = `<img src="/static/img/${config.favicon_image}?t=${Date.now()}" alt="Favicon" style="max-height: 32px;">`;
+                }
                 
                 // Carregar galeria
                 loadGallery(config.gallery.images);
@@ -755,6 +823,149 @@
         document.getElementById('logoutBtn').addEventListener('click', () => {
             logout();
         });
+
+        // Event Listeners para upload de logo e favicon
+        document.getElementById('logoUploadArea').addEventListener('click', () => {
+            document.getElementById('logoInput').click();
+        });
+
+        document.getElementById('logoInput').addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                uploadLogo(e.target.files[0]);
+            }
+        });
+
+        document.getElementById('faviconUploadArea').addEventListener('click', () => {
+            document.getElementById('faviconInput').click();
+        });
+
+        document.getElementById('faviconInput').addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                uploadFavicon(e.target.files[0]);
+            }
+        });
+
+        // Drag and drop para logo
+        const logoUploadArea = document.getElementById('logoUploadArea');
+        
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            logoUploadArea.addEventListener(eventName, preventDefaults, false);
+        });
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            logoUploadArea.addEventListener(eventName, () => {
+                logoUploadArea.style.borderColor = 'var(--secondary-color)';
+            }, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            logoUploadArea.addEventListener(eventName, () => {
+                logoUploadArea.style.borderColor = '#ddd';
+            }, false);
+        });
+
+        logoUploadArea.addEventListener('drop', (e) => {
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                uploadLogo(files[0]);
+            }
+        });
+
+        // Drag and drop para favicon
+        const faviconUploadArea = document.getElementById('faviconUploadArea');
+        
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            faviconUploadArea.addEventListener(eventName, preventDefaults, false);
+        });
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            faviconUploadArea.addEventListener(eventName, () => {
+                faviconUploadArea.style.borderColor = 'var(--secondary-color)';
+            }, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            faviconUploadArea.addEventListener(eventName, () => {
+                faviconUploadArea.style.borderColor = '#ddd';
+            }, false);
+        });
+
+        faviconUploadArea.addEventListener('drop', (e) => {
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                uploadFavicon(files[0]);
+            }
+        });
+
+        // Função para upload de logo
+        async function uploadLogo(file) {
+            const formData = new FormData();
+            formData.append('file', file);
+
+            try {
+                const response = await fetchWithAuth('/api/upload-logo', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                if (response.status === 401) {
+                    window.location.href = '/login';
+                    return;
+                }
+                
+                const result = await response.json();
+                
+                if (response.ok && result.status === 'success') {
+                    showMessage('Logo enviado com sucesso!', 'success');
+                    
+                    // Atualizar preview
+                    const logoPreview = document.getElementById('logoPreview');
+                    logoPreview.innerHTML = `<img src="${result.url}" alt="Logo" style="max-height: 100px;">`;
+                    
+                    // Recarregar configurações
+                    loadConfig();
+                } else {
+                    throw new Error(result.message || 'Erro ao enviar logo');
+                }
+            } catch (error) {
+                showMessage(error.message, 'error');
+            }
+        }
+
+        // Função para upload de favicon
+        async function uploadFavicon(file) {
+            const formData = new FormData();
+            formData.append('file', file);
+
+            try {
+                const response = await fetchWithAuth('/api/upload-favicon', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                if (response.status === 401) {
+                    window.location.href = '/login';
+                    return;
+                }
+                
+                const result = await response.json();
+                
+                if (response.ok && result.status === 'success') {
+                    showMessage('Favicon enviado com sucesso!', 'success');
+                    
+                    // Atualizar preview
+                    const faviconPreview = document.getElementById('faviconPreview');
+                    faviconPreview.innerHTML = `<img src="${result.url}" alt="Favicon" style="max-height: 32px;">`;
+                    
+                    // Recarregar configurações
+                    loadConfig();
+                } else {
+                    throw new Error(result.message || 'Erro ao enviar favicon');
+                }
+            } catch (error) {
+                showMessage(error.message, 'error');
+            }
+        }
     </script>
 </body>
 </html> 
