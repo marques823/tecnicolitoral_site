@@ -10,7 +10,7 @@
                     <p class="lead">Sistema de gerenciamento do site Técnico Litoral</p>
                     {% if user.is_authenticated %}
                     <p>Você está logado como <strong>{{ user.username }}</strong></p>
-                    <a href="{% url 'dashboard:dashboard' %}" class="btn btn-primary btn-lg mt-3">Ir para o Dashboard</a>
+                    <a href="{% url 'dashboard_admin:dashboard' %}" class="btn btn-primary btn-lg mt-3">Ir para o Dashboard</a>
                     {% else %}
                     <a href="{% url 'admin:index' %}" class="btn btn-primary btn-lg mt-3">Fazer Login</a>
                     {% endif %}
@@ -41,7 +41,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Visualizar relatórios</h5>
                     <p class="card-text">Veja estatísticas de acesso e desempenho do site.</p>
-                    <a href="{% url 'dashboard:dashboard' %}" class="btn btn-primary">Acessar</a>
+                    <a href="{% url 'dashboard_admin:dashboard' %}" class="btn btn-primary">Acessar</a>
                 </div>
             </div>
         </div>

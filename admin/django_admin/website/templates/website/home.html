@@ -1,0 +1,217 @@
+{% extends 'website/base.html' %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 hero-text">
+                <h1>Soluções em Tecnologia</h1>
+                <p>Assistência técnica especializada em informática para empresas e residências. Conte com nossa experiência para resolver seus problemas tecnológicos.</p>
+                <div class="d-flex gap-3">
+                    <a href="{% url 'website:services' %}" class="btn btn-light btn-lg">Nossos Serviços</a>
+                    <a href="{% url 'website:contact' %}" class="btn btn-outline-light btn-lg">Fale Conosco</a>
+                </div>
+            </div>
+            <div class="col-lg-6 mt-5 mt-lg-0 text-center">
+                <img src="https://via.placeholder.com/600x400/0056b3/ffffff?text=Técnico+Litoral" alt="Técnico Litoral" class="img-fluid rounded shadow">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-12 mb-5">
+                <h2 class="fw-bold">Por que escolher a Técnico Litoral?</h2>
+                <p class="lead">Oferecemos soluções completas em tecnologia com qualidade e agilidade</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="rounded-circle bg-primary bg-opacity-10 p-3 d-inline-block mb-3">
+                            <i class="fas fa-user-tie text-primary fs-1"></i>
+                        </div>
+                        <h4 class="card-title">Profissionais Qualificados</h4>
+                        <p class="card-text">Nossa equipe é formada por técnicos com certificação e anos de experiência no mercado.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="rounded-circle bg-primary bg-opacity-10 p-3 d-inline-block mb-3">
+                            <i class="fas fa-tools text-primary fs-1"></i>
+                        </div>
+                        <h4 class="card-title">Atendimento Rápido</h4>
+                        <p class="card-text">Garantimos pronto atendimento para que seu problema seja resolvido no menor tempo possível.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="rounded-circle bg-primary bg-opacity-10 p-3 d-inline-block mb-3">
+                            <i class="fas fa-shield-alt text-primary fs-1"></i>
+                        </div>
+                        <h4 class="card-title">Garantia de Serviço</h4>
+                        <p class="card-text">Todos os nossos serviços possuem garantia para que você tenha total segurança na contratação.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-12 mb-5">
+                <h2 class="fw-bold">Nossos Serviços</h2>
+                <p class="lead">Soluções completas para todas as suas necessidades em informática</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card service-card">
+                    <img src="https://via.placeholder.com/400x250/0056b3/ffffff?text=Manutenção" class="card-img-top" alt="Manutenção">
+                    <div class="card-body text-center">
+                        <div class="service-icon">
+                            <i class="fas fa-laptop-medical"></i>
+                        </div>
+                        <h4 class="card-title">Manutenção de Computadores</h4>
+                        <p class="card-text">Conserto e manutenção preventiva de desktops e notebooks, com diagnóstico preciso.</p>
+                        <a href="{% url 'website:services' %}" class="btn btn-primary">Saiba Mais</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card service-card">
+                    <img src="https://via.placeholder.com/400x250/0056b3/ffffff?text=Redes" class="card-img-top" alt="Redes">
+                    <div class="card-body text-center">
+                        <div class="service-icon">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <h4 class="card-title">Redes e Infraestrutura</h4>
+                        <p class="card-text">Instalação e configuração de redes, servidores, firewalls e sistemas de segurança.</p>
+                        <a href="{% url 'website:services' %}" class="btn btn-primary">Saiba Mais</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card service-card">
+                    <img src="https://via.placeholder.com/400x250/0056b3/ffffff?text=Software" class="card-img-top" alt="Software">
+                    <div class="card-body text-center">
+                        <div class="service-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h4 class="card-title">Desenvolvimento de Software</h4>
+                        <p class="card-text">Criação de sistemas personalizados, sites e aplicativos para o seu negócio.</p>
+                        <a href="{% url 'website:services' %}" class="btn btn-primary">Saiba Mais</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <a href="{% url 'website:services' %}" class="btn btn-lg btn-outline-primary">Ver Todos os Serviços</a>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-12 mb-5">
+                <h2 class="fw-bold">O que nossos clientes dizem</h2>
+                <p class="lead">A satisfação dos nossos clientes é a nossa maior recompensa</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <div class="d-flex mb-3">
+                            <span class="text-warning me-1"><i class="fas fa-star"></i></span>
+                            <span class="text-warning me-1"><i class="fas fa-star"></i></span>
+                            <span class="text-warning me-1"><i class="fas fa-star"></i></span>
+                            <span class="text-warning me-1"><i class="fas fa-star"></i></span>
+                            <span class="text-warning"><i class="fas fa-star"></i></span>
+                        </div>
+                        <p class="card-text mb-4">"Excelente atendimento! Resolveram o problema do meu notebook em poucas horas. Profissionais capacitados e preço justo."</p>
+                        <div class="d-flex align-items-center">
+                            <img src="https://via.placeholder.com/50x50" class="rounded-circle me-3" alt="Cliente">
+                            <div>
+                                <h6 class="mb-0">João Silva</h6>
+                                <small class="text-muted">Empresário</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <div class="d-flex mb-3">
+                            <span class="text-warning me-1"><i class="fas fa-star"></i></span>
+                            <span class="text-warning me-1"><i class="fas fa-star"></i></span>
+                            <span class="text-warning me-1"><i class="fas fa-star"></i></span>
+                            <span class="text-warning me-1"><i class="fas fa-star"></i></span>
+                            <span class="text-warning"><i class="fas fa-star"></i></span>
+                        </div>
+                        <p class="card-text mb-4">"Contratei o serviço de instalação de rede para minha empresa e fiquei muito satisfeita com o resultado. Recomendo!"</p>
+                        <div class="d-flex align-items-center">
+                            <img src="https://via.placeholder.com/50x50" class="rounded-circle me-3" alt="Cliente">
+                            <div>
+                                <h6 class="mb-0">Maria Oliveira</h6>
+                                <small class="text-muted">Gerente Comercial</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <div class="d-flex mb-3">
+                            <span class="text-warning me-1"><i class="fas fa-star"></i></span>
+                            <span class="text-warning me-1"><i class="fas fa-star"></i></span>
+                            <span class="text-warning me-1"><i class="fas fa-star"></i></span>
+                            <span class="text-warning me-1"><i class="fas fa-star"></i></span>
+                            <span class="text-warning me-1"><i class="fas fa-star-half-alt"></i></span>
+                        </div>
+                        <p class="card-text mb-4">"Meu computador estava extremamente lento e após a manutenção voltou a funcionar como novo. Serviço rápido e eficiente."</p>
+                        <div class="d-flex align-items-center">
+                            <img src="https://via.placeholder.com/50x50" class="rounded-circle me-3" alt="Cliente">
+                            <div>
+                                <h6 class="mb-0">Carlos Santos</h6>
+                                <small class="text-muted">Professor</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="py-5 bg-primary text-white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8 mb-4 mb-lg-0">
+                <h2 class="fw-bold">Pronto para resolver seus problemas de tecnologia?</h2>
+                <p class="lead mb-0">Entre em contato conosco agora mesmo e solicite um orçamento sem compromisso.</p>
+            </div>
+            <div class="col-lg-4 text-lg-end">
+                <a href="{% url 'website:contact' %}" class="btn btn-light btn-lg">Fale Conosco</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %} 

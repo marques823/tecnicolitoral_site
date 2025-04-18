@@ -19,10 +19,17 @@ from django.urls import path, include
 from django.views.generic import RedirectView
 
 urlpatterns = [
-    path('', include('dashboard.urls')),
-    path('admin/', admin.site.urls),
-    # Adiciona um redirecionamento automático de /admin para / quando o usuário sair do admin
-    path('admin/logout/', RedirectView.as_view(pattern_name='dashboard:index'), name='admin-logout'),
+    # Site principal na raiz
+    path('', include('website.urls')),
+    
+    # Painel administrativo Django
+    path('admin/django/', admin.site.urls),
+    
+    # Painel personalizado em /admin
+    path('admin/', include('dashboard.urls', namespace='dashboard_admin')),
+    
+    # Redirecionamento ao sair do admin do Django
+    path('admin/django/logout/', RedirectView.as_view(pattern_name='dashboard_admin:index'), name='admin-logout'),
 ]
 
 # Personaliza os títulos do admin
