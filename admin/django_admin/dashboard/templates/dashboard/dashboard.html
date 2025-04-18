@@ -1,0 +1,140 @@
+{% extends 'dashboard/base.html' %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+        <h1 class="h2">Dashboard</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+            <div class="btn-group me-2">
+                <button type="button" class="btn btn-sm btn-outline-secondary">Compartilhar</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary">Exportar</button>
+            </div>
+            <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                <span data-feather="calendar"></span>
+                Esta semana
+            </button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card text-white bg-primary mb-4">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="card-title text-white-50">Visitantes</h6>
+                            <h2 class="display-4 mb-0">2,342</h2>
+                        </div>
+                        <div class="text-right">
+                            <h3><i class="fas fa-users"></i></h3>
+                        </div>
+                    </div>
+                    <p class="card-text">Últimos 30 dias</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-white bg-success mb-4">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="card-title text-white-50">Artigos</h6>
+                            <h2 class="display-4 mb-0">45</h2>
+                        </div>
+                        <div class="text-right">
+                            <h3><i class="fas fa-file-alt"></i></h3>
+                        </div>
+                    </div>
+                    <p class="card-text">Total de artigos publicados</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-white bg-warning mb-4">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="card-title text-white-50">Contatos</h6>
+                            <h2 class="display-4 mb-0">13</h2>
+                        </div>
+                        <div class="text-right">
+                            <h3><i class="fas fa-envelope"></i></h3>
+                        </div>
+                    </div>
+                    <p class="card-text">Mensagens não lidas</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-8">
+            <div class="card mb-4">
+                <div class="card-header">
+                    Estatísticas de Visitantes
+                </div>
+                <div class="card-body">
+                    <canvas id="visitorChart" height="250"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-header">
+                    Conteúdo Mais Acessado
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Página Inicial
+                            <span class="badge bg-primary rounded-pill">1.2k</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Sobre Nós
+                            <span class="badge bg-primary rounded-pill">745</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Serviços
+                            <span class="badge bg-primary rounded-pill">598</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Contato
+                            <span class="badge bg-primary rounded-pill">412</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Blog
+                            <span class="badge bg-primary rounded-pill">387</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var ctx = document.getElementById('visitorChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+                datasets: [{
+                    label: 'Visitantes',
+                    backgroundColor: 'rgba(26, 35, 126, 0.1)',
+                    borderColor: '#1a237e',
+                    data: [1200, 1900, 1500, 1800, 2200, 2400, 2100, 2300, 2800, 2600, 2300, 2900]
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+    });
+</script>
+{% endblock %} 
