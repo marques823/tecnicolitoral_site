@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+/* Override para fontes */
+body, button, input, select, textarea {
+    font-family: "Roboto", "Lucida Grande", "DejaVu Sans", "Bitstream Vera Sans", Verdana, Arial, sans-serif !important;
+    color: #333;
+}
+
+/* Ajustes para o cabeçalho */
+#header {
+    background: #417690;
+    color: #fff;
+}
+
+#branding h1, #branding h1 a:link, #branding h1 a:visited {
+    color: #f5dd5d;
+}
+
+/* Ajustes para módulos e tabelas */
+.module h2, .module caption, .inline-group h2 {
+    background: #417690;
+    color: #fff;
+    padding: 8px;
+}
+
+/* Fundo branco para conteúdo principal */
+#content {
+    background: #fff;
+}
+
+/* Melhorar contraste dos textos */
+body, p, td, th {
+    color: #222;
+}
+
+/* Estilos para botões */
+.button, input[type=submit], input[type=button], .submit-row input, a.button {
+    background: #417690;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+}
+
+.button:active, input[type=submit]:active, input[type=button]:active,
+.button:focus, input[type=submit]:focus, input[type=button]:focus,
+.button:hover, input[type=submit]:hover, input[type=button]:hover {
+    background: #305570;
+}
+
+.button.default, input[type=submit].default, .submit-row input.default {
+    background: #305570;
+}
+
+/* Links */
+a:link, a:visited {
+    color: #447e9b;
+    text-decoration: none;
+}
+
+a:focus, a:hover {
+    color: #305570;
+}
+
+/* Melhorar contraste de elementos específicos */
+.dashboard .module table th {
+    color: #333;
+}
+
+.paginator a:link, .paginator a:visited {
+    background: #fff;
+    color: #417690;
+}
+
+.paginator a:hover {
+    background: #efefef;
+}
+
+/* Mensagens */
+ul.messagelist li {
+    color: #333;
+}
+
+/* Corrigir tabelas */
+table {
+    border-collapse: collapse;
+    border-color: #ddd;
+}
+
+th {
+    background: #f8f8f8;
+    color: #333;
+    font-weight: bold;
+}
+
+tr:nth-child(odd), .row-form-errors {
+    background: #fff;
+}
+
+tr:nth-child(even) {
+    background: #f8f8f8;
+}
+
+/* Remover cores de fundo desnecessárias */
+.breadcrumbs {
+    background: #417690;
+    color: #fff;
+}
+
+.breadcrumbs a {
+    color: #f5dd5d;
+}
+
+/* Menu lateral */
+.module ul.nav-list li > a {
+    color: #333;
+}
+
+.module ul.nav-list li.current-model > a {
+    color: #417690;
+} 
