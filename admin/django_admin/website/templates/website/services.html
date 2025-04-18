@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-12 text-center">
                 <h1 class="display-4 fw-bold">Nossos Serviços</h1>
-                <p class="lead">Soluções completas em tecnologia para sua empresa ou residência</p>
+                <p class="lead">Soluções completas em tecnologia e segurança para sua empresa ou residência</p>
             </div>
         </div>
     </div>
@@ -19,83 +19,112 @@
         <div class="row mb-5">
             <div class="col-12 text-center">
                 <h2 class="fw-bold">Serviços Principais</h2>
-                <p class="lead">Oferecemos uma ampla gama de soluções tecnológicas</p>
+                <p class="lead">Oferecemos uma ampla gama de soluções tecnológicas e de segurança</p>
             </div>
         </div>
         
-        <!-- Service 1 -->
-        <div class="row align-items-center mb-5 pb-5 border-bottom">
-            <div class="col-lg-6 mb-4 mb-lg-0">
-                <img src="https://via.placeholder.com/600x400/0056b3/ffffff?text=Manutenção+de+Computadores" alt="Manutenção de Computadores" class="img-fluid rounded shadow">
-            </div>
-            <div class="col-lg-6">
-                <h3 class="fw-bold mb-4">Manutenção de Computadores</h3>
-                <p>Oferecemos serviços completos de manutenção preventiva e corretiva para desktops e notebooks, garantindo o melhor desempenho para seus equipamentos.</p>
-                <ul class="list-unstyled">
-                    <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Formatação e instalação de sistemas operacionais</li>
-                    <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Remoção de vírus e malwares</li>
-                    <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Substituição de peças e componentes</li>
-                    <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Limpeza interna e otimização de desempenho</li>
-                    <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Backup e recuperação de dados</li>
-                </ul>
-                <a href="{% url 'website:contact' %}" class="btn btn-primary mt-3">Solicitar Orçamento</a>
-            </div>
-        </div>
-        
-        <!-- Service 2 -->
-        <div class="row align-items-center mb-5 pb-5 border-bottom flex-lg-row-reverse">
-            <div class="col-lg-6 mb-4 mb-lg-0">
-                <img src="https://via.placeholder.com/600x400/0056b3/ffffff?text=Redes+e+Infraestrutura" alt="Redes e Infraestrutura" class="img-fluid rounded shadow">
-            </div>
-            <div class="col-lg-6">
-                <h3 class="fw-bold mb-4">Redes e Infraestrutura</h3>
-                <p>Projetamos, implementamos e mantemos soluções completas de infraestrutura de rede para pequenas, médias e grandes empresas.</p>
-                <ul class="list-unstyled">
-                    <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Instalação e configuração de redes locais</li>
-                    <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Implantação de infraestrutura de Wi-Fi</li>
-                    <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Configuração de servidores e firewall</li>
-                    <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Sistemas de segurança e monitoramento</li>
-                    <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Soluções de backup e redundância</li>
-                </ul>
-                <a href="{% url 'website:contact' %}" class="btn btn-primary mt-3">Solicitar Orçamento</a>
+        <!-- Instalação de Infraestrutura -->
+        <div class="service-item">
+            <div class="row align-items-center">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <img src="https://placeholder.pics/svg/600x400/0056b3-ffffff/INFRAESTRUTURA%20DE%20REDES" alt="Infraestrutura de Redes" class="img-fluid rounded shadow">
+                </div>
+                <div class="col-lg-8">
+                    <h3>Instalação de Infraestrutura de Redes</h3>
+                    <p>
+                        Instalamos e configuramos toda a infraestrutura necessária para que sua rede funcione perfeitamente, desde cabeamento estruturado até equipamentos como switches, roteadores e access points.
+                    </p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check-circle text-primary"></i> Cabeamento estruturado</li>
+                        <li><i class="fas fa-check-circle text-primary"></i> Instalação e configuração de ativos de rede</li>
+                        <li><i class="fas fa-check-circle text-primary"></i> Configuração de roteadores e firewalls</li>
+                        <li><i class="fas fa-check-circle text-primary"></i> Redes sem fio (Wi-Fi)</li>
+                    </ul>
+                </div>
             </div>
         </div>
         
-        <!-- Service 3 -->
-        <div class="row align-items-center mb-5 pb-5 border-bottom">
-            <div class="col-lg-6 mb-4 mb-lg-0">
-                <img src="https://via.placeholder.com/600x400/0056b3/ffffff?text=Desenvolvimento+de+Software" alt="Desenvolvimento de Software" class="img-fluid rounded shadow">
-            </div>
-            <div class="col-lg-6">
-                <h3 class="fw-bold mb-4">Desenvolvimento de Software</h3>
-                <p>Desenvolvemos soluções personalizadas que atendem às necessidades específicas do seu negócio, desde sistemas web até aplicativos móveis.</p>
-                <ul class="list-unstyled">
-                    <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Desenvolvimento de sites e e-commerce</li>
-                    <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Criação de sistemas de gestão empresarial</li>
-                    <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Aplicativos para Android e iOS</li>
-                    <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Integração com sistemas e APIs existentes</li>
-                    <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Sistemas sob medida para seu negócio</li>
-                </ul>
-                <a href="{% url 'website:contact' %}" class="btn btn-primary mt-3">Solicitar Orçamento</a>
+        <!-- Automação e Manutenção de Portões e Cancelas -->
+        <div class="service-item">
+            <div class="row align-items-center">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <img src="https://placeholder.pics/svg/600x400/0056b3-ffffff/AUTOMAÇÃO%20DE%20PORTÕES" alt="Automação de Portões e Cancelas" class="img-fluid rounded shadow">
+                </div>
+                <div class="col-lg-8">
+                    <h3>Automação e Manutenção de Portões e Cancelas</h3>
+                    <p>
+                        Oferecemos serviços completos de instalação, manutenção e automação de portões e cancelas eletrônicas para residências e empresas, garantindo segurança e praticidade.
+                    </p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check-circle text-primary"></i> Instalação de motores para portões deslizantes e basculantes</li>
+                        <li><i class="fas fa-check-circle text-primary"></i> Manutenção preventiva e corretiva</li>
+                        <li><i class="fas fa-check-circle text-primary"></i> Instalação de cancelas automáticas para condomínios e empresas</li>
+                        <li><i class="fas fa-check-circle text-primary"></i> Sistemas de controle de acesso integrados</li>
+                    </ul>
+                </div>
             </div>
         </div>
         
-        <!-- Service 4 -->
-        <div class="row align-items-center flex-lg-row-reverse">
-            <div class="col-lg-6 mb-4 mb-lg-0">
-                <img src="https://via.placeholder.com/600x400/0056b3/ffffff?text=Suporte+Técnico" alt="Suporte Técnico" class="img-fluid rounded shadow">
+        <!-- Instalação de Câmeras de Segurança -->
+        <div class="service-item">
+            <div class="row align-items-center">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <img src="https://placeholder.pics/svg/600x400/0056b3-ffffff/CÂMERAS%20DE%20SEGURANÇA" alt="Câmeras de Segurança" class="img-fluid rounded shadow">
+                </div>
+                <div class="col-lg-8">
+                    <h3>Instalação de Câmeras de Segurança</h3>
+                    <p>
+                        Proteja seu patrimônio com nossos sistemas de monitoramento por câmeras. Oferecemos soluções personalizadas para ambientes residenciais e comerciais.
+                    </p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check-circle text-primary"></i> Câmeras de alta definição (HD, Full HD, 4K)</li>
+                        <li><i class="fas fa-check-circle text-primary"></i> Sistemas de CFTV analógico e IP</li>
+                        <li><i class="fas fa-check-circle text-primary"></i> Instalação de DVR e NVR para gravação</li>
+                        <li><i class="fas fa-check-circle text-primary"></i> Acesso remoto via smartphone e computador</li>
+                    </ul>
+                </div>
             </div>
-            <div class="col-lg-6">
-                <h3 class="fw-bold mb-4">Suporte Técnico</h3>
-                <p>Oferecemos suporte técnico contínuo para empresas e profissionais, garantindo que seus sistemas funcionem sem interrupções.</p>
-                <ul class="list-unstyled">
-                    <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Atendimento remoto e presencial</li>
-                    <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Resolução rápida de problemas técnicos</li>
-                    <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Manutenção preventiva programada</li>
-                    <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Help desk para equipes e funcionários</li>
-                    <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Contratos de suporte personalizados</li>
-                </ul>
-                <a href="{% url 'website:contact' %}" class="btn btn-primary mt-3">Solicitar Orçamento</a>
+        </div>
+        
+        <!-- Instalação de Alarmes -->
+        <div class="service-item">
+            <div class="row align-items-center">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <img src="https://placeholder.pics/svg/600x400/0056b3-ffffff/SISTEMAS%20DE%20ALARME" alt="Sistemas de Alarme" class="img-fluid rounded shadow">
+                </div>
+                <div class="col-lg-8">
+                    <h3>Instalação de Sistemas de Alarme</h3>
+                    <p>
+                        Aumente a segurança do seu imóvel com nossos sistemas de alarme modernos e eficientes, projetados para detectar invasões e alertar imediatamente.
+                    </p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check-circle text-primary"></i> Sensores de movimento e abertura</li>
+                        <li><i class="fas fa-check-circle text-primary"></i> Centrais de alarme com ou sem fio</li>
+                        <li><i class="fas fa-check-circle text-primary"></i> Instalação de sirenes e alertas</li>
+                        <li><i class="fas fa-check-circle text-primary"></i> Monitoramento via aplicativo</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Instalação de Sistemas PABX IP SIP -->
+        <div class="service-item">
+            <div class="row align-items-center">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <img src="https://placeholder.pics/svg/600x400/0056b3-ffffff/PABX%20IP" alt="Sistemas PABX IP" class="img-fluid rounded shadow">
+                </div>
+                <div class="col-lg-8">
+                    <h3>Instalação de Sistemas PABX IP SIP</h3>
+                    <p>
+                        Modernize a comunicação da sua empresa com nossas soluções de telefonia IP. Sistemas mais eficientes, com menores custos operacionais e recursos avançados.
+                    </p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check-circle text-primary"></i> Instalação de centrais telefônicas IP</li>
+                        <li><i class="fas fa-check-circle text-primary"></i> Configuração de ramais SIP</li>
+                        <li><i class="fas fa-check-circle text-primary"></i> Integração com sistemas existentes</li>
+                        <li><i class="fas fa-check-circle text-primary"></i> Soluções de atendimento automático e URA</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
@@ -115,10 +144,10 @@
                 <div class="card h-100 border-0 shadow-sm">
                     <div class="card-body p-4">
                         <div class="mb-4 text-center">
-                            <i class="fas fa-cloud fs-1 text-primary"></i>
+                            <i class="fas fa-network-wired fs-1 text-primary"></i>
                         </div>
-                        <h4 class="card-title text-center mb-3">Soluções em Cloud</h4>
-                        <p class="card-text">Migração para a nuvem, implementação de serviços AWS, Azure ou Google Cloud, backup e armazenamento em nuvem.</p>
+                        <h4 class="card-title text-center mb-3">Infraestrutura de Rede</h4>
+                        <p class="card-text">Instalação e configuração de redes estruturadas, Wi-Fi corporativo, switches, roteadores e servidores locais.</p>
                     </div>
                 </div>
             </div>
@@ -126,10 +155,10 @@
                 <div class="card h-100 border-0 shadow-sm">
                     <div class="card-body p-4">
                         <div class="mb-4 text-center">
-                            <i class="fas fa-shield-alt fs-1 text-primary"></i>
+                            <i class="fas fa-laptop fs-1 text-primary"></i>
                         </div>
-                        <h4 class="card-title text-center mb-3">Segurança da Informação</h4>
-                        <p class="card-text">Implementação de políticas de segurança, firewall, antivírus corporativo, treinamento e conscientização para equipes.</p>
+                        <h4 class="card-title text-center mb-3">Manutenção de Computadores</h4>
+                        <p class="card-text">Formatação, limpeza, substituição de peças, otimização de desempenho e recuperação de dados para desktops e notebooks.</p>
                     </div>
                 </div>
             </div>
@@ -137,10 +166,10 @@
                 <div class="card h-100 border-0 shadow-sm">
                     <div class="card-body p-4">
                         <div class="mb-4 text-center">
-                            <i class="fas fa-chalkboard-teacher fs-1 text-primary"></i>
+                            <i class="fas fa-code fs-1 text-primary"></i>
                         </div>
-                        <h4 class="card-title text-center mb-3">Consultoria em TI</h4>
-                        <p class="card-text">Planejamento estratégico em TI, projetos de infraestrutura, análise de processos e governança de TI.</p>
+                        <h4 class="card-title text-center mb-3">Desenvolvimento de Software</h4>
+                        <p class="card-text">Criação de sites, sistemas de gestão, aplicativos móveis e soluções personalizadas para o seu negócio.</p>
                     </div>
                 </div>
             </div>

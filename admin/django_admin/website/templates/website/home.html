@@ -6,15 +6,17 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-6 hero-text">
-                <h1>Soluções em Tecnologia</h1>
-                <p>Assistência técnica especializada em informática para empresas e residências. Conte com nossa experiência para resolver seus problemas tecnológicos.</p>
+                <h1>Soluções em Tecnologia e Segurança</h1>
+                <p>Sistemas de automação, segurança e comunicação para sua residência ou empresa. Conte com nossa experiência para projetos completos e suporte técnico especializado.</p>
                 <div class="d-flex gap-3">
                     <a href="{% url 'website:services' %}" class="btn btn-light btn-lg">Nossos Serviços</a>
                     <a href="{% url 'website:contact' %}" class="btn btn-outline-light btn-lg">Fale Conosco</a>
                 </div>
             </div>
             <div class="col-lg-6 mt-5 mt-lg-0 text-center">
-                <img src="https://via.placeholder.com/600x400/0056b3/ffffff?text=Técnico+Litoral" alt="Técnico Litoral" class="img-fluid rounded shadow">
+                <div class="hero-image-container rounded shadow overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1557683316-973673baf926?q=80&w=1200" alt="Serviços de Segurança" class="img-fluid">
+                </div>
             </div>
         </div>
     </div>
@@ -26,7 +28,7 @@
         <div class="row text-center">
             <div class="col-12 mb-5">
                 <h2 class="fw-bold">Por que escolher a Técnico Litoral?</h2>
-                <p class="lead">Oferecemos soluções completas em tecnologia com qualidade e agilidade</p>
+                <p class="lead">Oferecemos soluções completas em tecnologia e segurança com qualidade e agilidade</p>
             </div>
         </div>
         <div class="row">
@@ -37,7 +39,7 @@
                             <i class="fas fa-user-tie text-primary fs-1"></i>
                         </div>
                         <h4 class="card-title">Profissionais Qualificados</h4>
-                        <p class="card-text">Nossa equipe é formada por técnicos com certificação e anos de experiência no mercado.</p>
+                        <p class="card-text">Nossa equipe é formada por técnicos com certificação e anos de experiência no mercado de segurança e automação.</p>
                     </div>
                 </div>
             </div>
@@ -48,7 +50,7 @@
                             <i class="fas fa-tools text-primary fs-1"></i>
                         </div>
                         <h4 class="card-title">Atendimento Rápido</h4>
-                        <p class="card-text">Garantimos pronto atendimento para que seu problema seja resolvido no menor tempo possível.</p>
+                        <p class="card-text">Garantimos pronto atendimento para que seus projetos e suporte técnico sejam resolvidos no menor tempo possível.</p>
                     </div>
                 </div>
             </div>
@@ -59,7 +61,7 @@
                             <i class="fas fa-shield-alt text-primary fs-1"></i>
                         </div>
                         <h4 class="card-title">Garantia de Serviço</h4>
-                        <p class="card-text">Todos os nossos serviços possuem garantia para que você tenha total segurança na contratação.</p>
+                        <p class="card-text">Todos os nossos serviços possuem garantia para que você tenha total segurança e tranquilidade na contratação.</p>
                     </div>
                 </div>
             </div>
@@ -73,47 +75,38 @@
         <div class="row text-center">
             <div class="col-12 mb-5">
                 <h2 class="fw-bold">Nossos Serviços</h2>
-                <p class="lead">Soluções completas para todas as suas necessidades em informática</p>
+                <p class="lead">Soluções completas para automação, segurança e comunicação</p>
             </div>
         </div>
         <div class="row">
             <div class="col-md-4 mb-4">
-                <div class="card service-card">
-                    <img src="https://via.placeholder.com/400x250/0056b3/ffffff?text=Manutenção" class="card-img-top" alt="Manutenção">
-                    <div class="card-body text-center">
-                        <div class="service-icon">
-                            <i class="fas fa-laptop-medical"></i>
-                        </div>
-                        <h4 class="card-title">Manutenção de Computadores</h4>
-                        <p class="card-text">Conserto e manutenção preventiva de desktops e notebooks, com diagnóstico preciso.</p>
-                        <a href="{% url 'website:services' %}" class="btn btn-primary">Saiba Mais</a>
+                <div class="service-box">
+                    <div class="service-icon">
+                        <i class="fas fa-cogs"></i>
                     </div>
+                    <h4>Portões e Cancelas</h4>
+                    <p>Instalação e manutenção de portões automáticos e cancelas para residências e empresas.</p>
+                    <a href="{% url 'website:services' %}" class="btn btn-primary btn-sm">Saiba Mais</a>
                 </div>
             </div>
             <div class="col-md-4 mb-4">
-                <div class="card service-card">
-                    <img src="https://via.placeholder.com/400x250/0056b3/ffffff?text=Redes" class="card-img-top" alt="Redes">
-                    <div class="card-body text-center">
-                        <div class="service-icon">
-                            <i class="fas fa-network-wired"></i>
-                        </div>
-                        <h4 class="card-title">Redes e Infraestrutura</h4>
-                        <p class="card-text">Instalação e configuração de redes, servidores, firewalls e sistemas de segurança.</p>
-                        <a href="{% url 'website:services' %}" class="btn btn-primary">Saiba Mais</a>
+                <div class="service-box">
+                    <div class="service-icon">
+                        <i class="fas fa-video"></i>
                     </div>
+                    <h4>Câmeras e Alarmes</h4>
+                    <p>Sistemas de monitoramento por câmeras, alarmes e soluções de segurança integradas.</p>
+                    <a href="{% url 'website:services' %}" class="btn btn-primary btn-sm">Saiba Mais</a>
                 </div>
             </div>
             <div class="col-md-4 mb-4">
-                <div class="card service-card">
-                    <img src="https://via.placeholder.com/400x250/0056b3/ffffff?text=Software" class="card-img-top" alt="Software">
-                    <div class="card-body text-center">
-                        <div class="service-icon">
-                            <i class="fas fa-code"></i>
-                        </div>
-                        <h4 class="card-title">Desenvolvimento de Software</h4>
-                        <p class="card-text">Criação de sistemas personalizados, sites e aplicativos para o seu negócio.</p>
-                        <a href="{% url 'website:services' %}" class="btn btn-primary">Saiba Mais</a>
+                <div class="service-box">
+                    <div class="service-icon">
+                        <i class="fas fa-phone-alt"></i>
                     </div>
+                    <h4>PABX IP SIP</h4>
+                    <p>Instalação de sistemas telefônicos IP SIP para melhorar a comunicação da sua empresa.</p>
+                    <a href="{% url 'website:services' %}" class="btn btn-primary btn-sm">Saiba Mais</a>
                 </div>
             </div>
         </div>
@@ -123,8 +116,103 @@
     </div>
 </section>
 
-<!-- Testimonials Section -->
+<!-- Gallery Section -->
 <section class="py-5 bg-light">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-12 mb-5">
+                <h2 class="fw-bold">Galeria de Projetos</h2>
+                <p class="lead">Conheça alguns de nossos trabalhos realizados</p>
+            </div>
+        </div>
+        <div class="row gallery-container">
+            <div class="col-md-4 col-6 mb-4">
+                <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#galleryModal" data-image="https://images.unsplash.com/photo-1553779922-a8c21ed51ba6?q=80&w=2000">
+                    <img src="https://images.unsplash.com/photo-1553779922-a8c21ed51ba6?q=80&w=600" alt="Portão Automático" class="img-fluid rounded">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h5>Portão Automático</h5>
+                            <p>Instalação Residencial</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-6 mb-4">
+                <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#galleryModal" data-image="https://images.unsplash.com/photo-1609113160023-4e31f3a18ec0?q=80&w=2000">
+                    <img src="https://images.unsplash.com/photo-1609113160023-4e31f3a18ec0?q=80&w=600" alt="Câmeras de Segurança" class="img-fluid rounded">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h5>Câmeras de Segurança</h5>
+                            <p>Sistema de Monitoramento</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-6 mb-4">
+                <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#galleryModal" data-image="https://images.unsplash.com/photo-1551703599-2d1aaac68b62?q=80&w=2000">
+                    <img src="https://images.unsplash.com/photo-1551703599-2d1aaac68b62?q=80&w=600" alt="Central de Alarme" class="img-fluid rounded">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h5>Central de Alarme</h5>
+                            <p>Instalação Comercial</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-6 mb-4">
+                <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#galleryModal" data-image="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?q=80&w=2000">
+                    <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?q=80&w=600" alt="Sistema PABX IP" class="img-fluid rounded">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h5>Sistema PABX IP</h5>
+                            <p>Comunicação Empresarial</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-6 mb-4">
+                <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#galleryModal" data-image="https://images.unsplash.com/photo-1557711445-b103aee9b06c?q=80&w=2000">
+                    <img src="https://images.unsplash.com/photo-1557711445-b103aee9b06c?q=80&w=600" alt="Controle de Acesso" class="img-fluid rounded">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h5>Controle de Acesso</h5>
+                            <p>Condomínio Residencial</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-6 mb-4">
+                <div class="gallery-item" data-bs-toggle="modal" data-bs-target="#galleryModal" data-image="https://images.unsplash.com/photo-1517085269646-1bbe631ee2c3?q=80&w=2000">
+                    <img src="https://images.unsplash.com/photo-1517085269646-1bbe631ee2c3?q=80&w=600" alt="Infraestrutura de Rede" class="img-fluid rounded">
+                    <div class="gallery-overlay">
+                        <div class="gallery-info">
+                            <h5>Infraestrutura de Rede</h5>
+                            <p>Projeto Corporativo</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Modal para exibir imagens ampliadas -->
+<div class="modal fade" id="galleryModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+            </div>
+            <div class="modal-body text-center">
+                <img src="" alt="" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Testimonials Section -->
+<section class="py-5">
     <div class="container">
         <div class="row text-center">
             <div class="col-12 mb-5">
@@ -143,12 +231,12 @@
                             <span class="text-warning me-1"><i class="fas fa-star"></i></span>
                             <span class="text-warning"><i class="fas fa-star"></i></span>
                         </div>
-                        <p class="card-text mb-4">"Excelente atendimento! Resolveram o problema do meu notebook em poucas horas. Profissionais capacitados e preço justo."</p>
+                        <p class="card-text mb-4">"Excelente atendimento! Instalaram o sistema de câmeras em minha residência com rapidez e qualidade. Profissionais capacitados e preço justo."</p>
                         <div class="d-flex align-items-center">
-                            <img src="https://via.placeholder.com/50x50" class="rounded-circle me-3" alt="Cliente">
+                            <img src="https://randomuser.me/api/portraits/men/41.jpg" class="rounded-circle me-3" alt="Cliente" width="50" height="50">
                             <div>
                                 <h6 class="mb-0">João Silva</h6>
-                                <small class="text-muted">Empresário</small>
+                                <small class="text-muted">São Sebastião/SP</small>
                             </div>
                         </div>
                     </div>
@@ -164,12 +252,12 @@
                             <span class="text-warning me-1"><i class="fas fa-star"></i></span>
                             <span class="text-warning"><i class="fas fa-star"></i></span>
                         </div>
-                        <p class="card-text mb-4">"Contratei o serviço de instalação de rede para minha empresa e fiquei muito satisfeita com o resultado. Recomendo!"</p>
+                        <p class="card-text mb-4">"Contratei o serviço de automação dos portões para meu condomínio e fiquei muito satisfeito com o resultado. Recomendo!"</p>
                         <div class="d-flex align-items-center">
-                            <img src="https://via.placeholder.com/50x50" class="rounded-circle me-3" alt="Cliente">
+                            <img src="https://randomuser.me/api/portraits/women/65.jpg" class="rounded-circle me-3" alt="Cliente" width="50" height="50">
                             <div>
                                 <h6 class="mb-0">Maria Oliveira</h6>
-                                <small class="text-muted">Gerente Comercial</small>
+                                <small class="text-muted">Síndica - Barra do Sahy</small>
                             </div>
                         </div>
                     </div>
@@ -185,12 +273,12 @@
                             <span class="text-warning me-1"><i class="fas fa-star"></i></span>
                             <span class="text-warning me-1"><i class="fas fa-star-half-alt"></i></span>
                         </div>
-                        <p class="card-text mb-4">"Meu computador estava extremamente lento e após a manutenção voltou a funcionar como novo. Serviço rápido e eficiente."</p>
+                        <p class="card-text mb-4">"A implementação do sistema PABX IP modernizou a comunicação da minha empresa. Serviço rápido e equipe muito prestativa."</p>
                         <div class="d-flex align-items-center">
-                            <img src="https://via.placeholder.com/50x50" class="rounded-circle me-3" alt="Cliente">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" class="rounded-circle me-3" alt="Cliente" width="50" height="50">
                             <div>
                                 <h6 class="mb-0">Carlos Santos</h6>
-                                <small class="text-muted">Professor</small>
+                                <small class="text-muted">Empresário - São Sebastião</small>
                             </div>
                         </div>
                     </div>
@@ -205,13 +293,126 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-8 mb-4 mb-lg-0">
-                <h2 class="fw-bold">Pronto para resolver seus problemas de tecnologia?</h2>
+                <h2 class="fw-bold">Pronto para melhorar a segurança e automação do seu espaço?</h2>
                 <p class="lead mb-0">Entre em contato conosco agora mesmo e solicite um orçamento sem compromisso.</p>
             </div>
             <div class="col-lg-4 text-lg-end">
-                <a href="{% url 'website:contact' %}" class="btn btn-light btn-lg">Fale Conosco</a>
+                <a href="https://wa.me/5512997413821" target="_blank" class="btn btn-light btn-lg">
+                    <i class="fab fa-whatsapp me-2"></i> Fale Conosco
+                </a>
             </div>
         </div>
     </div>
 </section>
+
+{% block extra_css %}
+<style>
+    /* Estilos para as caixas de serviços */
+    .service-box {
+        text-align: center;
+        padding: 2rem;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        transition: all 0.3s ease;
+        height: 100%;
+    }
+    
+    .service-box:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+    
+    .service-box .service-icon {
+        font-size: 3rem;
+        color: #0056b3;
+        margin-bottom: 1.5rem;
+    }
+    
+    /* Estilos para a galeria */
+    .gallery-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: 8px;
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+    }
+    
+    .gallery-item:hover {
+        transform: scale(1.03);
+        box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    }
+    
+    .gallery-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 86, 179, 0.7);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .gallery-item:hover .gallery-overlay {
+        opacity: 1;
+    }
+    
+    .gallery-info {
+        text-align: center;
+        padding: 0 15px;
+    }
+    
+    .gallery-info h5 {
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+    }
+    
+    .gallery-info p {
+        margin-bottom: 0;
+        font-size: 0.9rem;
+    }
+    
+    .hero-image-container {
+        overflow: hidden;
+    }
+    
+    .hero-image-container img {
+        transition: transform 0.5s ease;
+    }
+    
+    .hero-image-container:hover img {
+        transform: scale(1.05);
+    }
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Script para o modal da galeria
+    document.addEventListener('DOMContentLoaded', function() {
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const modal = document.getElementById('galleryModal');
+        
+        galleryItems.forEach(item => {
+            item.addEventListener('click', function() {
+                const modalImage = modal.querySelector('.modal-body img');
+                const modalTitle = modal.querySelector('.modal-title');
+                const imageUrl = this.getAttribute('data-image');
+                const title = this.querySelector('h5').textContent;
+                const subtitle = this.querySelector('p').textContent;
+                
+                modalImage.src = imageUrl;
+                modalImage.alt = title;
+                modalTitle.textContent = title + ' - ' + subtitle;
+            });
+        });
+    });
+</script>
+{% endblock %}
 {% endblock %} 
