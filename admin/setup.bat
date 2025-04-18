@@ -23,6 +23,15 @@ if not exist django_admin\manage.py (
     cd django_admin
     python manage.py startapp dashboard
     cd ..
+    
+    echo Configurando settings.py manualmente...
+    echo Por favor, verifique se as seguintes configurações foram aplicadas:
+    echo 1. Adicione 'localhost', '127.0.0.1' e '*' ao ALLOWED_HOSTS
+    echo 2. Configure o idioma para 'pt-br' e o fuso horário para 'America/Sao_Paulo'
+    echo 3. Adicione 'dashboard', 'rest_framework' e 'corsheaders' aos INSTALLED_APPS
+    echo 4. Adicione 'corsheaders.middleware.CorsMiddleware' ao MIDDLEWARE
+    echo 5. Adicione CORS_ALLOW_ALL_ORIGINS = True ao final do arquivo
+    pause
 )
 
 :: Aplicar migrações

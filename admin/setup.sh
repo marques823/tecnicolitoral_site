@@ -27,6 +27,22 @@ if [ ! -f "django_admin/manage.py" ]; then
     cd django_admin
     python manage.py startapp dashboard
     cd ..
+    
+    # Configurar ALLOWED_HOSTS
+    sed -i "s/ALLOWED_HOSTS = \[\]/ALLOWED_HOSTS = \['localhost', '127.0.0.1', '10.10.10.2', '*'\]/" django_admin/tecnicolitoral_admin/settings.py
+    
+    # Configurar idioma e fuso horário
+    sed -i "s/LANGUAGE_CODE = 'en-us'/LANGUAGE_CODE = 'pt-br'/" django_admin/tecnicolitoral_admin/settings.py
+    sed -i "s/TIME_ZONE = 'UTC'/TIME_ZONE = 'America\/Sao_Paulo'/" django_admin/tecnicolitoral_admin/settings.py
+    
+    # Adicionar apps ao settings.py
+    sed -i "/INSTALLED_APPS = \[/a\    'dashboard',\n    'rest_framework',\n    'corsheaders'," django_admin/tecnicolitoral_admin/settings.py
+    
+    # Adicionar middleware CORS
+    sed -i "/SessionMiddleware',/a\    'corsheaders.middleware.CorsMiddleware'," django_admin/tecnicolitoral_admin/settings.py
+    
+    # Adicionar configuração CORS
+    echo -e "\n# Configurações CORS\nCORS_ALLOW_ALL_ORIGINS = True" >> django_admin/tecnicolitoral_admin/settings.py
 fi
 
 # Aplicar migrações
