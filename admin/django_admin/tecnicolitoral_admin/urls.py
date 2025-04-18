@@ -17,6 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import RedirectView
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     # Site principal na raiz
@@ -36,3 +38,7 @@ urlpatterns = [
 admin.site.site_header = 'Administração Técnico Litoral'
 admin.site.site_title = 'Painel Administrativo'
 admin.site.index_title = 'Bem-vindo ao Painel de Gestão'
+
+# Servir arquivos estáticos em desenvolvimento
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -1,0 +1,165 @@
+{% extends 'website/base.html' %}
+
+{% block content %}
+<!-- Services Hero Section -->
+<section class="py-5 bg-primary text-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="display-4 fw-bold">Nossos Serviços</h1>
+                <p class="lead">Soluções completas em tecnologia para sua empresa ou residência</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Main Services Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-12 text-center">
+                <h2 class="fw-bold">Serviços Principais</h2>
+                <p class="lead">Oferecemos uma ampla gama de soluções tecnológicas</p>
+            </div>
+        </div>
+        
+        <!-- Service 1 -->
+        <div class="row align-items-center mb-5 pb-5 border-bottom">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <img src="https://via.placeholder.com/600x400/0056b3/ffffff?text=Manutenção+de+Computadores" alt="Manutenção de Computadores" class="img-fluid rounded shadow">
+            </div>
+            <div class="col-lg-6">
+                <h3 class="fw-bold mb-4">Manutenção de Computadores</h3>
+                <p>Oferecemos serviços completos de manutenção preventiva e corretiva para desktops e notebooks, garantindo o melhor desempenho para seus equipamentos.</p>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Formatação e instalação de sistemas operacionais</li>
+                    <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Remoção de vírus e malwares</li>
+                    <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Substituição de peças e componentes</li>
+                    <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Limpeza interna e otimização de desempenho</li>
+                    <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Backup e recuperação de dados</li>
+                </ul>
+                <a href="{% url 'website:contact' %}" class="btn btn-primary mt-3">Solicitar Orçamento</a>
+            </div>
+        </div>
+        
+        <!-- Service 2 -->
+        <div class="row align-items-center mb-5 pb-5 border-bottom flex-lg-row-reverse">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <img src="https://via.placeholder.com/600x400/0056b3/ffffff?text=Redes+e+Infraestrutura" alt="Redes e Infraestrutura" class="img-fluid rounded shadow">
+            </div>
+            <div class="col-lg-6">
+                <h3 class="fw-bold mb-4">Redes e Infraestrutura</h3>
+                <p>Projetamos, implementamos e mantemos soluções completas de infraestrutura de rede para pequenas, médias e grandes empresas.</p>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Instalação e configuração de redes locais</li>
+                    <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Implantação de infraestrutura de Wi-Fi</li>
+                    <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Configuração de servidores e firewall</li>
+                    <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Sistemas de segurança e monitoramento</li>
+                    <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Soluções de backup e redundância</li>
+                </ul>
+                <a href="{% url 'website:contact' %}" class="btn btn-primary mt-3">Solicitar Orçamento</a>
+            </div>
+        </div>
+        
+        <!-- Service 3 -->
+        <div class="row align-items-center mb-5 pb-5 border-bottom">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <img src="https://via.placeholder.com/600x400/0056b3/ffffff?text=Desenvolvimento+de+Software" alt="Desenvolvimento de Software" class="img-fluid rounded shadow">
+            </div>
+            <div class="col-lg-6">
+                <h3 class="fw-bold mb-4">Desenvolvimento de Software</h3>
+                <p>Desenvolvemos soluções personalizadas que atendem às necessidades específicas do seu negócio, desde sistemas web até aplicativos móveis.</p>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Desenvolvimento de sites e e-commerce</li>
+                    <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Criação de sistemas de gestão empresarial</li>
+                    <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Aplicativos para Android e iOS</li>
+                    <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Integração com sistemas e APIs existentes</li>
+                    <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Sistemas sob medida para seu negócio</li>
+                </ul>
+                <a href="{% url 'website:contact' %}" class="btn btn-primary mt-3">Solicitar Orçamento</a>
+            </div>
+        </div>
+        
+        <!-- Service 4 -->
+        <div class="row align-items-center flex-lg-row-reverse">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <img src="https://via.placeholder.com/600x400/0056b3/ffffff?text=Suporte+Técnico" alt="Suporte Técnico" class="img-fluid rounded shadow">
+            </div>
+            <div class="col-lg-6">
+                <h3 class="fw-bold mb-4">Suporte Técnico</h3>
+                <p>Oferecemos suporte técnico contínuo para empresas e profissionais, garantindo que seus sistemas funcionem sem interrupções.</p>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Atendimento remoto e presencial</li>
+                    <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Resolução rápida de problemas técnicos</li>
+                    <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Manutenção preventiva programada</li>
+                    <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Help desk para equipes e funcionários</li>
+                    <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> Contratos de suporte personalizados</li>
+                </ul>
+                <a href="{% url 'website:contact' %}" class="btn btn-primary mt-3">Solicitar Orçamento</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Additional Services Section -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-12 text-center">
+                <h2 class="fw-bold">Serviços Adicionais</h2>
+                <p class="lead">Complementamos nossa oferta com soluções específicas</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <div class="mb-4 text-center">
+                            <i class="fas fa-cloud fs-1 text-primary"></i>
+                        </div>
+                        <h4 class="card-title text-center mb-3">Soluções em Cloud</h4>
+                        <p class="card-text">Migração para a nuvem, implementação de serviços AWS, Azure ou Google Cloud, backup e armazenamento em nuvem.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <div class="mb-4 text-center">
+                            <i class="fas fa-shield-alt fs-1 text-primary"></i>
+                        </div>
+                        <h4 class="card-title text-center mb-3">Segurança da Informação</h4>
+                        <p class="card-text">Implementação de políticas de segurança, firewall, antivírus corporativo, treinamento e conscientização para equipes.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <div class="mb-4 text-center">
+                            <i class="fas fa-chalkboard-teacher fs-1 text-primary"></i>
+                        </div>
+                        <h4 class="card-title text-center mb-3">Consultoria em TI</h4>
+                        <p class="card-text">Planejamento estratégico em TI, projetos de infraestrutura, análise de processos e governança de TI.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="py-5 bg-primary text-white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8 mb-4 mb-lg-0">
+                <h2 class="fw-bold">Precisa de uma solução personalizada?</h2>
+                <p class="lead mb-0">Entre em contato para discutirmos seu projeto específico e elaborarmos uma proposta sob medida.</p>
+            </div>
+            <div class="col-lg-4 text-lg-end">
+                <a href="{% url 'website:contact' %}" class="btn btn-light btn-lg">Fale Conosco</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %} 
