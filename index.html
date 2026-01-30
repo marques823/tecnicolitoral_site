@@ -3,693 +3,728 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Favicons com caminho absoluto -->
-    <link rel="icon" href="favicon.png" type="image/png">
-    <link rel="shortcut icon" href="favicon.png" type="image/png">
-    <link rel="apple-touch-icon" href="favicon.png">
-    <meta name="msapplication-TileImage" content="favicon.png">
-    <title>Técnico Litoral - Segurança Eletrônica e Automação</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --dark-blue: #037394;
-            --medium-blue: #0389b3;
-            --dark-green: #025e78;
-            --light-green: #04a0c6;
-            --light-gray: #f5f5f5;
-            --white: #ffffff;
+    <title>Técnico Litoral - Segurança Eletrônica em São Sebastião SP</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Técnico Litoral - Especialistas em segurança eletrônica no litoral norte de SP. Instalação de câmeras, alarmes, automatização de portões, controle de acesso e PABX IP. Atendemos de Maresias a Boracéia. WhatsApp: (12) 99741-3821">
+    <meta name="keywords" content="segurança eletrônica, câmeras de segurança, CFTV, alarme residencial, automatização portões, controle de acesso, PABX IP, São Sebastião, Maresias, Juquehy, Barra do Sahy, litoral norte SP">
+    <meta name="author" content="Técnico Litoral">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="Portuguese">
+    <meta name="geo.region" content="BR-SP">
+    <meta name="geo.placename" content="São Sebastião">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tecnicolitoral.com/">
+    <meta property="og:title" content="Técnico Litoral - Segurança Eletrônica em São Sebastião SP">
+    <meta property="og:description" content="Especialistas em segurança eletrônica no litoral norte de SP. Instalação de câmeras, alarmes, automatização de portões e PABX IP.">
+    <meta property="og:image" content="https://tecnicolitoral.com/static/img/logo.png">
+    <meta property="og:locale" content="pt_BR">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://tecnicolitoral.com/">
+    <meta property="twitter:title" content="Técnico Litoral - Segurança Eletrônica">
+    <meta property="twitter:description" content="Especialistas em segurança eletrônica no litoral norte de SP.">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://tecnicolitoral.com/">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/favicon.png">
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Técnico Litoral",
+        "description": "Empresa especializada em segurança eletrônica, instalação de câmeras, alarmes, automatização de portões e PABX IP no litoral norte de São Paulo.",
+        "url": "https://tecnicolitoral.com",
+        "telephone": "+55-12-99741-3821",
+        "email": "contato@tecnicolitoral.com",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "São Sebastião",
+            "addressRegion": "SP",
+            "addressCountry": "BR",
+            "streetAddress": "Barra do Sahy"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "-23.7825",
+            "longitude": "-45.6556"
+        },
+        "areaServed": {
+            "@type": "Place",
+            "name": "Costa Sul de São Sebastião - Maresias a Boracéia"
+        },
+        "openingHours": "Mo-Fr 09:00-18:00",
+        "priceRange": "$$",
+        "image": "https://tecnicolitoral.com/static/img/logo.png",
+        "sameAs": [],
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Serviços de Segurança Eletrônica",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Instalação de Câmeras de Segurança",
+                        "description": "Instalação profissional de sistemas CFTV para monitoramento residencial e comercial"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Automatização de Portões",
+                        "description": "Automatização de portões residenciais, industriais e cancelas"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Sistemas de Alarme",
+                        "description": "Instalação de alarmes residenciais e comerciais com monitoramento"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "PABX IP",
+                        "description": "Instalação e configuração de centrais telefônicas IP e SIP"
+                    }
+                }
+            ]
         }
-        
+    }
+    </script>
+    <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Roboto', Arial, sans-serif;
         }
-        
+
         body {
-            background-color: var(--light-gray);
-            color: #333;
+            font-family: 'Arial', sans-serif;
             line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
         }
-        
-        header {
-            background-color: var(--dark-blue);
-            color: var(--white);
-            padding: 1rem 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        
+
         .container {
-            width: 90%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 15px;
+            padding: 0 20px;
         }
-        
-        nav {
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #037394 0%, #0389b3 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        
+
         .logo {
             font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--white);
-            text-decoration: none;
+            font-weight: bold;
             display: flex;
             align-items: center;
+            gap: 10px;
         }
-        
-        .logo img {
-            max-height: 50px;
-            max-width: 200px;
-            margin-right: 10px;
-            display: none; /* Hidden by default */
+
+        .logo::before {
+            content: "";
+            font-size: 1.5rem;
         }
-        
-        #logo-text {
-            display: block; /* Shown by default */
-        }
-        
-        .nav-links {
+
+        nav ul {
             display: flex;
             list-style: none;
+            gap: 30px;
         }
-        
-        .nav-links li {
-            margin-left: 1.5rem;
-        }
-        
-        .nav-links a {
-            color: var(--white);
+
+        nav a {
+            color: white;
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s;
         }
-        
-        .nav-links a:hover {
-            color: var(--light-green);
+
+        nav a:hover {
+            color: #04a0c6;
         }
-        
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        /* Hero Section */
         .hero {
-            background: linear-gradient(to right, var(--dark-blue), var(--dark-green));
-            color: var(--white);
-            padding: 5rem 0;
+            background: 
+                linear-gradient(135deg, rgba(3, 115, 148, 0.9) 0%, rgba(3, 137, 179, 0.9) 50%, rgba(4, 160, 198, 0.8) 100%),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><pattern id="hexagons" x="0" y="0" width="60" height="52" patternUnits="userSpaceOnUse"><polygon fill="%23037494" fill-opacity="0.1" points="30,0 60,26 60,52 30,78 0,52 0,26"/></pattern><pattern id="dots" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="2" fill="%2304a0c6" fill-opacity="0.15"/></pattern><radialGradient id="grad1" cx="50%" cy="50%" r="50%"><stop offset="0%" style="stop-color:%23037494;stop-opacity:0.3"/><stop offset="100%" style="stop-color:%23037494;stop-opacity:0"/></radialGradient></defs><rect width="1200" height="800" fill="url(%23hexagons)"/><rect width="1200" height="800" fill="url(%23dots)"/><circle cx="200" cy="200" r="150" fill="url(%23grad1)"/><circle cx="1000" cy="600" r="200" fill="url(%23grad1)"/><circle cx="800" cy="150" r="100" fill="url(%23grad1)"/></svg>');
+            color: white;
+            padding: 120px 0 60px;
             text-align: center;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
         }
-        
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(4, 160, 198, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(3, 115, 148, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(3, 137, 179, 0.15) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 30% 70%, rgba(4, 160, 198, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 70% 30%, rgba(3, 115, 148, 0.1) 0%, transparent 40%);
+            animation: float 6s ease-in-out infinite;
+            pointer-events: none;
+        }
+
         .hero h1 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
-        
+
         .hero p {
             font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto 2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
         }
-        
-        .btn {
-            display: inline-block;
-            background-color: var(--light-green);
-            color: var(--white);
-            padding: 0.8rem 1.5rem;
-            border-radius: 4px;
+
+        .cta-button {
+            background: linear-gradient(45deg, #04a0c6, #0389b3);
+            color: white;
+            padding: 15px 40px;
             text-decoration: none;
-            font-weight: 500;
-            transition: background-color 0.3s;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(4, 160, 198, 0.3);
         }
-        
-        .btn:hover {
-            background-color: var(--dark-green);
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(4, 160, 198, 0.4);
         }
-        
+
+        /* Services Section */
         .services {
-            padding: 4rem 0;
-            background-color: var(--white);
+            padding: 60px 0;
+            background: white;
         }
-        
+
         .section-title {
             text-align: center;
-            margin-bottom: 3rem;
-            color: var(--dark-blue);
+            font-size: 2.2rem;
+            color: #037394;
+            margin-bottom: 2.5rem;
+            position: relative;
         }
-        
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(45deg, #04a0c6, #0389b3);
+        }
+
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
         }
-        
+
         .service-card {
-            background-color: var(--white);
-            border-radius: 8px;
-            padding: 2rem;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            border: 2px solid transparent;
         }
-        
+
         .service-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+            border-color: #04a0c6;
         }
-        
+
         .service-icon {
             font-size: 2.5rem;
-            color: var(--medium-blue);
-            margin-bottom: 1rem;
+            margin-bottom: 15px;
+            color: #037394;
         }
-        
+
         .service-card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            color: var(--dark-blue);
+            color: #037394;
+            margin-bottom: 12px;
+            font-size: 1.3rem;
         }
-        
-        .about {
-            padding: 4rem 0;
-            background-color: var(--light-gray);
+
+        .service-card p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 0.95rem;
         }
-        
-        .about-content {
+
+        /* Contact Section */
+        .contact {
+            padding: 60px 0;
+            background: #f8f9fa;
+        }
+
+        .contact-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            align-items: center;
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
         }
-        
-        .contact {
-            padding: 4rem 0;
-            background-color: var(--white);
-        }
-        
+
         .contact-info {
-            margin-top: 2rem;
+            background: white;
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            text-align: center;
         }
-        
+
+        .contact-info h3 {
+            color: #037394;
+            margin-bottom: 25px;
+            font-size: 1.6rem;
+        }
+
         .contact-item {
             display: flex;
             align-items: center;
-            margin-bottom: 1rem;
-        }
-        
-        .contact-icon {
-            font-size: 1.2rem;
-            color: var(--medium-blue);
-            margin-right: 1rem;
-        }
-        
-        .whatsapp-link {
-            color: #25D366;
-            margin-left: 0.5rem;
-            font-size: 1.5rem;
+            justify-content: center;
+            margin-bottom: 20px;
+            padding: 12px;
+            background: #f8f9fa;
+            border-radius: 8px;
             transition: transform 0.3s;
         }
-        
-        .whatsapp-link:hover {
-            transform: scale(1.1);
+
+        .contact-item:hover {
+            transform: translateY(-3px);
         }
-        
-        .email-link {
-            color: var(--medium-blue);
+
+        .contact-item i {
+            font-size: 1.3rem;
+            color: #037394;
+            margin-right: 12px;
+            width: 25px;
+        }
+
+        .contact-item a {
+            color: #25D366;
             text-decoration: none;
-            transition: color 0.3s;
+            font-weight: bold;
+            font-size: 1rem;
         }
-        
-        .email-link:hover {
-            color: var(--dark-blue);
+
+        .contact-item a:hover {
             text-decoration: underline;
         }
-        
-        .gallery {
-            padding: 4rem 0;
-            background-color: var(--light-gray);
-        }
-        
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-        
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 8px;
-            aspect-ratio: 1;
-        }
-        
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s;
-        }
-        
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-        
-        /* Estilos para o carrossel */
-        .carousel {
-            position: relative;
-            width: 100%;
-            max-width: 800px;
-            margin: 0 auto;
-            overflow: hidden;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        }
-        
-        .carousel-container {
-            display: flex;
-            transition: transform 0.5s ease;
-            height: 450px;
-        }
-        
-        .carousel-slide {
-            min-width: 100%;
-            height: 100%;
-            position: relative;
-        }
-        
-        .carousel-slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .carousel-button {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(0,0,0,0.5);
-            color: white;
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 18px;
-            z-index: 10;
-            transition: background-color 0.3s;
-        }
-        
-        .carousel-button:hover {
-            background-color: rgba(0,0,0,0.8);
-        }
-        
-        .carousel-button.prev {
-            left: 10px;
-        }
-        
-        .carousel-button.next {
-            right: 10px;
-        }
-        
-        .carousel-indicators {
-            position: absolute;
-            bottom: 10px;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            z-index: 10;
-        }
-        
-        .carousel-indicator {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background-color: rgba(255,255,255,0.5);
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        
-        .carousel-indicator.active {
-            background-color: white;
-        }
-        
-        .map-container {
-            width: 100%;
-            height: 400px;
-            margin-top: 2rem;
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        
-        .map-container iframe {
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-        
-        footer {
-            background-color: var(--dark-blue);
-            color: var(--white);
-            padding: 2rem 0;
+
+        .contact-map {
+            background: white;
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
             text-align: center;
         }
-        
+
+        .contact-map h3 {
+            color: #037394;
+            margin-bottom: 25px;
+            font-size: 1.6rem;
+        }
+
+        .map-placeholder {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            height: 200px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #037394;
+            font-weight: bold;
+            border: 2px dashed #037394;
+        }
+
+        /* Footer */
+        footer {
+            background: #025e78;
+            color: white;
+            text-align: center;
+            padding: 35px 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 25px;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 12px;
+            color: #04a0c6;
+            font-size: 1.1rem;
+        }
+
+        .footer-section p {
+            opacity: 0.9;
+            line-height: 1.6;
+            font-size: 0.9rem;
+        }
+        .site-em-desenvolvimento {
+            opacity: 0.9;
+            line-height: 1.6;
+            font-size: 0.9rem;
+            color: #e6e476;
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
             .hero h1 {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
-            
+
             .hero p {
-                font-size: 1rem;
+                font-size: 1.1rem;
             }
-            
-            .gallery-grid {
-                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+
+            .hero {
+                padding: 140px 0 60px;
             }
+
+            .hamburger {
+                display: flex;
+            }
+
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: linear-gradient(135deg, #037394 0%, #0389b3 100%);
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+                z-index: 999;
+            }
+
+            nav.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0;
+                padding: 20px 0;
+                margin: 0;
+            }
+
+            nav ul li {
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+                list-style: none;
+            }
+
+            nav ul li:last-child {
+                border-bottom: none;
+            }
+
+            nav a {
+                display: block;
+                padding: 15px 20px;
+                text-align: center;
+            }
+
+            nav a:hover {
+                background: rgba(255,255,255,0.1);
+            }
+
+            .header-content {
+                position: relative;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+            }
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
         }
     </style>
 </head>
 <body>
+    <!-- Header -->
     <header>
         <div class="container">
-            <nav>
-                <a href="#" class="logo">
-                    <img id="logo-img" src="static/img/logo.png" alt="Técnico Litoral" style="display: block; max-height: 50px;">
-                    <span id="logo-text" style="display: none;">Técnico Litoral</span>
-                </a>
-                <ul class="nav-links">
-                    <li><a href="#services">Serviços</a></li>
-                    <li><a href="#gallery">Galeria</a></li>
-                    <li><a href="#about">Sobre</a></li>
-                    <li><a href="#contact">Contato</a></li>
-                </ul>
-            </nav>
+            <div class="header-content">
+                <div class="logo">Técnico Litoral</div>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <nav id="nav">
+                    <ul>
+                        <li><a href="#home">Início</a></li>
+                        <li><a href="#services">Serviços</a></li>
+                        <li><a href="#contact">Contato</a></li>
+                    </ul>
+                </nav>
+            </div>
         </div>
     </header>
 
+    <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="container">
-            <h1>Segurança Eletrônica e Automação Profissional</h1>
-            <p>Soluções completas em segurança eletrônica, automação de portões e controle de acesso para sua residência ou empresa.</p>
-            <a href="#contact" class="btn">Entre em Contato</a>
+            <h1>Segurança Eletrônica Profissional</h1>
+            <p>Proteção completa para sua casa ou empresa com tecnologia de ponta.</p>
+<!--        <p class="site-em-desenvolvimento">Site em desenvolvimento, para mais informações entre em contato via WhatsApp.</p> -->
+            <a href="#contact" class="cta-button">Entre em Contato</a> <br>
         </div>
     </section>
 
+    <!-- Services Section -->
     <section id="services" class="services">
         <div class="container">
             <h2 class="section-title">Nossos Serviços</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem; color: #666;">
+                Oferecemos soluções completas em segurança eletrônica e automação para residências e empresas no litoral norte de São Paulo. Com mais de 10 anos de experiência, nossa equipe técnica qualificada garante instalações profissionais e suporte contínuo.
+            </p>
             <div class="services-grid">
                 <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-video"></i>
-                    </div>
-                    <h3>Instalação de Câmeras</h3>
-                    <p>Sistemas de CFTV profissionais para monitoramento em tempo real e gravação de alta qualidade.</p>
+                    <div class="service-icon">📹</div>
+                    <h3>Câmeras de Segurança (CFTV)</h3>
+                    <p>Sistemas de CFTV profissionais para monitoramento em tempo real e gravação. Instalamos câmeras HD e Full HD com visão noturna, DVR/NVR para gravação contínua e acesso remoto pelo celular. Ideal para casas de praia, comércios e condomínios.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-door-open"></i>
-                    </div>
+                    <div class="service-icon">🚨</div>
+                    <h3>Alarmes e Sensores</h3>
+                    <p>Sistemas de alarme residencial e comercial com sensores de presença, abertura de portas e janelas, sirenes e monitoramento 24 horas. Proteja sua propriedade contra invasões e tentativas de arrombamento com tecnologia de ponta.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🚗</div>
                     <h3>Automatização de Portões</h3>
-                    <p>Soluções modernas para automatização de portões residenciais e industriais.</p>
+                    <p>Automatização de portões de garagem, portões deslizantes, basculantes e pivotantes. Instalação e manutenção de cancelas automáticas para condomínios e estacionamentos. Motor, controles remotos e sistemas de segurança.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-id-card"></i>
-                    </div>
+                    <div class="service-icon">🔐</div>
                     <h3>Controle de Acesso</h3>
-                    <p>Sistemas de controle de acesso com tecnologia avançada para maior segurança.</p>
+                    <p>Sistemas de controle de acesso por biometria, cartão de proximidade, senha ou reconhecimento facial. Fechaduras eletrônicas, catracas e portarias virtuais para condomínios e empresas. Registro de entrada e saída.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>Segurança Eletrônica</h3>
-                    <p>Alarmes, sensores e equipamentos de proteção para sua tranquilidade.</p>
+                    <div class="service-icon">📞</div>
+                    <h3>PABX IP e Telefonia</h3>
+                    <p>Instalação e configuração de centrais telefônicas PABX IP (VoIP) e analógicas. Ramais, URA, gravação de chamadas e integração com celular. Reduza custos com telefonia e melhore a comunicação da sua empresa.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔧</div>
+                    <h3>Manutenção e Suporte</h3>
+                    <p>Manutenção preventiva e corretiva de todos os sistemas instalados. Suporte técnico rápido e eficiente. Atendemos chamados de emergência na região de Maresias a Boracéia com agilidade e profissionalismo.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="gallery" class="gallery">
-        <div class="container">
-            <h2 class="section-title">Galeria de Fotos</h2>
-            
-            <div class="carousel">
-                <div class="carousel-container">
-                    <!-- Imagens serão adicionadas via JavaScript -->
-                </div>
-                <button class="carousel-button prev">&#10094;</button>
-                <button class="carousel-button next">&#10095;</button>
-                <div class="carousel-indicators">
-                    <!-- Indicadores serão adicionados via JavaScript -->
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title">Sobre Nós</h2>
-            <div class="about-content">
-                <div>
-                    <p id="about-text">A Técnico Litoral é uma empresa especializada em soluções de segurança eletrônica e automação, atendendo clientes residenciais e empresariais na região do litoral.</p>
-                    <p>Contamos com profissionais experientes e qualificados, comprometidos em oferecer serviços de alta qualidade e atendimento personalizado.</p>
-                    <p>Nossa missão é proporcionar tranquilidade e segurança através de soluções tecnológicas modernas e eficientes.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
+    <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
             <h2 class="section-title">Entre em Contato</h2>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-phone"></i>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Informações de Contato</h3>
+                    <div class="contact-item">
+                        <i></i>
+                        <div>
+                            <strong>WhatsApp:</strong><br>
+                            <a href="https://wa.me/5512997413821" target="_blank">(12) 99741-3821</a>
+                        </div>
                     </div>
-                    <p id="contact-phone">(XX) XXXXX-XXXX</p>
-                    <a id="contact-whatsapp" href="https://wa.me/55XXXXXXXXXXX" target="_blank" class="whatsapp-link">
-                        <i class="fab fa-whatsapp"></i>
-                    </a>
+                    <div class="contact-item">
+                        <i></i>
+                        <div>
+                            <strong>E-mail:</strong><br>
+                            contato@tecnicolitoral.com
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i></i>
+                        <div>
+                            <strong>Endereço:</strong><br>
+                            Barra do Sahy<br>
+                            São Sebastião - SP
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i></i>
+                        <div>
+                            <strong>Horário:</strong><br>
+                            Segunda a Sexta: 9h às 18h
+                        </div>
+                    </div>
                 </div>
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-envelope"></i>
+                <div class="contact-map">
+                    <h3>Nossa Localização</h3>
+                    <div class="map-placeholder">
+                        Área de Atendimento<br>
+                        Costa Sul de São Sebastião<br>
+                        Maresias até Boracéia
                     </div>
-                    <a id="contact-email" href="mailto:contato@tecnicolitoral.com.br" class="email-link">contato@tecnicolitoral.com.br</a>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <p id="contact-address">Barra do Shay, São Sebastião - São Paulo</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2023 Técnico Litoral - Todos os direitos reservados</p>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Técnico Litoral</h4>
+                    <p>Especialistas em segurança eletrônica com mais de 10 anos de experiência no mercado. Oferecemos soluções completas e personalizadas para sua proteção.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Nossos Serviços</h4>
+                    <p>• Instalação de Câmeras<br>
+                    • Automatização de Portões<br>
+                    • Controle de Acesso<br>
+                    • PABX iP e Analógico</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Atendimento</h4>
+                    <p>Atendemos a Costa Sul de São Sebastião de Maresias até Boracéia.</p>
+                </div>
+            </div>
+            <p>&copy; 2025 Técnico Litoral. Todos os direitos reservados.</p>
         </div>
     </footer>
 
     <script>
-        // Carregar configurações do site
-        async function loadConfig() {
-            try {
-                const response = await fetch('/api/config');
-                const config = await response.json();
-                
-                // Atualizar informações de contato
-                document.getElementById('contact-phone').textContent = config.contact.phone;
-                document.getElementById('contact-whatsapp').setAttribute('href', `https://wa.me/${config.contact.whatsapp}`);
-                document.getElementById('contact-email').textContent = config.contact.email;
-                document.getElementById('contact-email').setAttribute('href', `mailto:${config.contact.email}`);
-                document.getElementById('contact-address').textContent = config.contact.address;
-                
-                // Atualizar texto sobre a empresa
-                document.getElementById('about-text').innerHTML = config.about.text.replace(/\n/g, '<br>');
+        // Menu hamburger functionality
+        const hamburger = document.getElementById('hamburger');
+        const nav = document.getElementById('nav');
+        const navLinks = document.querySelectorAll('#nav a');
 
-                // Carregar logo e favicon
-                if (config.logo_image) {
-                    const logoImg = document.querySelector('#logo-img');
-                    if (logoImg) {
-                        logoImg.src = `/static/img/${config.logo_image}`;
-                        logoImg.alt = "Técnico Litoral";
-                        logoImg.style.display = "block";
-                        document.querySelector('#logo-text').style.display = "none";
-                        console.log('Logo carregado dinamicamente:', config.logo_image);
-                    }
-                } else {
-                    console.log('Usando logo estático pré-definido');
-                }
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            nav.classList.toggle('active');
+        });
 
-                if (config.favicon_image) {
-                    // Usar caminhos absolutos para todos os favicons
-                    const faviconPath = `/static/img/${config.favicon_image}`;
-                    
-                    // Não usamos mais IDs, então precisamos selecionar todos os elementos de favicon
-                    const allFavicons = document.querySelectorAll('link[rel="icon"], link[rel="shortcut icon"], link[rel="apple-touch-icon"]');
-                    const msIcon = document.querySelector('meta[name="msapplication-TileImage"]');
-                    
-                    // Atualizar todos os favicons
-                    allFavicons.forEach(favicon => {
-                        favicon.href = faviconPath;
-                    });
-                    
-                    if (msIcon) msIcon.content = faviconPath;
-                    
-                    console.log('Favicons atualizados dinamicamente:', config.favicon_image);
-                } else {
-                    console.log('Usando favicon estático pré-definido');
-                }
-                
-                // Obter imagens da galeria
-                let images = [];
-                
-                if (config.gallery && config.gallery.images) {
-                    images = config.gallery.images;
-                }
-                
-                // Se não houver imagens na configuração, tentar buscar da API
-                if (!images.length) {
-                    console.log('Sem imagens na configuração, tentando buscar da API...');
-                    try {
-                        const imagesResponse = await fetch('/api/images');
-                        if (imagesResponse.ok) {
-                            const imagesData = await imagesResponse.json();
-                            if (imagesData.images && imagesData.images.length) {
-                                images = imagesData.images;
-                                console.log('Imagens obtidas da API:', images);
-                            }
-                        }
-                    } catch (imageError) {
-                        console.error('Erro ao buscar imagens da API:', imageError);
-                    }
-                }
-                
-                // Carregar galeria de imagens para o carrossel
-                console.log('Imagens finais para carregar no carrossel:', images);
-                loadCarousel(images);
-            } catch (error) {
-                console.error('Erro ao carregar configurações:', error);
+        // Close menu when clicking on a link
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                nav.classList.remove('active');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !nav.contains(e.target)) {
+                hamburger.classList.remove('active');
+                nav.classList.remove('active');
             }
-        }
-        
-        // Carregar imagens no carrossel
-        function loadCarousel(images) {
-            console.log("Carregando carrossel com imagens:", images);
-            const carouselContainer = document.querySelector('.carousel-container');
-            const indicatorsContainer = document.querySelector('.carousel-indicators');
-            
-            // Se não houver imagens, mostrar placeholder
-            if (!images || images.length === 0) {
-                console.log("Nenhuma imagem para exibir no carrossel");
-                carouselContainer.innerHTML = `
-                    <div class="carousel-slide">
-                        <img src="placeholder.jpg" alt="Sem imagens disponíveis">
-                    </div>
-                `;
-                indicatorsContainer.innerHTML = '';
-                return;
-            }
-            
-            // Limpar conteúdo existente
-            carouselContainer.innerHTML = '';
-            indicatorsContainer.innerHTML = '';
-            
-            // Adicionar cada imagem como um slide
-            images.forEach((image, index) => {
-                console.log(`Adicionando imagem ${index + 1}:`, image);
-                const slide = document.createElement('div');
-                slide.className = 'carousel-slide';
-                slide.innerHTML = `<img src="/uploads/${image}" alt="Imagem ${index + 1}">`;
-                carouselContainer.appendChild(slide);
-                
-                // Adicionar indicador
-                const indicator = document.createElement('div');
-                indicator.className = 'carousel-indicator' + (index === 0 ? ' active' : '');
-                indicator.dataset.index = index;
-                indicator.addEventListener('click', () => {
-                    currentSlide = index;
-                    updateCarousel();
-                });
-                indicatorsContainer.appendChild(indicator);
-            });
-            
-            // Inicializar o carrossel
-            console.log("Inicializando carrossel com", images.length, "imagens");
-            initCarousel();
-        }
-        
-        // Variáveis para controle do carrossel
-        let currentSlide = 0;
-        let carouselInterval;
-        
-        // Inicializar carrossel
-        function initCarousel() {
-            const slides = document.querySelectorAll('.carousel-slide');
-            if (!slides.length) return;
-            
-            // Configurar botões de navegação
-            document.querySelector('.carousel-button.prev').addEventListener('click', () => {
-                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-                updateCarousel();
-                resetCarouselInterval();
-            });
-            
-            document.querySelector('.carousel-button.next').addEventListener('click', () => {
-                currentSlide = (currentSlide + 1) % slides.length;
-                updateCarousel();
-                resetCarouselInterval();
-            });
-            
-            // Iniciar rotação automática
-            startCarouselInterval();
-        }
-        
-        // Atualizar a posição do carrossel
-        function updateCarousel() {
-            const container = document.querySelector('.carousel-container');
-            container.style.transform = `translateX(-${currentSlide * 100}%)`;
-            
-            // Atualizar indicadores
-            const indicators = document.querySelectorAll('.carousel-indicator');
-            indicators.forEach((indicator, index) => {
-                if (index === currentSlide) {
-                    indicator.classList.add('active');
-                } else {
-                    indicator.classList.remove('active');
-                }
-            });
-        }
-        
-        // Iniciar intervalo para rotação automática
-        function startCarouselInterval() {
-            carouselInterval = setInterval(() => {
-                const slides = document.querySelectorAll('.carousel-slide');
-                if (!slides.length) return;
-                
-                currentSlide = (currentSlide + 1) % slides.length;
-                updateCarousel();
-            }, 5000); // Mudar slide a cada 5 segundos
-        }
-        
-        // Resetar intervalo quando o usuário interage com o carrossel
-        function resetCarouselInterval() {
-            clearInterval(carouselInterval);
-            startCarouselInterval();
-        }
-        
-        // Carregar configurações quando a página carregar
-        document.addEventListener('DOMContentLoaded', loadConfig);
+        });
     </script>
 </body>
 </html>

@@ -12,7 +12,7 @@ from urllib.parse import parse_qs, urlparse
 # Parsing dos argumentos de linha de comando
 parser = argparse.ArgumentParser(description='Servidor web para o site da Técnico Litoral')
 parser.add_argument('-p', '--port', type=int, default=9998, help='Porta para o servidor (padrão: 9998)')
-parser.add_argument('-a', '--address', type=str, default='0.0.0.0', help='Endereço IP para o servidor (padrão: 0.0.0.0 - todas as interfaces)')
+parser.add_argument('-a', '--address', type=str, default='localhost', help='Endereço IP para o servidor (padrão: 0.0.0.0 - todas as interfaces)')
 args = parser.parse_args()
 
 # Configurações do servidor
@@ -59,6 +59,42 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         super().__init__(*args, directory=DIRECTORY, **kwargs)
         self.config = load_config()
 
+    def send_error(self, code, message=None, explain=None):
+        """Página de erro personalizada para 404"""
+        if code == 404:
+            self.send_response(404)
+            self.send_header('Content-type', 'text/html; charset=utf-8')
+            self.end_headers()
+            try:
+                with open(os.path.join(DIRECTORY, '404.html'), 'rb') as f:
+                    self.wfile.write(f.read())
+            except:
+                self.wfile.write(b'<h1>404 - Pagina nao encontrada</h1>')
+            return
+        super().send_error(code, message, explain)
+
+    def end_headers(self):
+        """Adiciona headers de segurança"""
+        self.send_header('X-Content-Type-Options', 'nosniff')
+        self.send_header('X-Frame-Options', 'SAMEORIGIN')
+        self.send_header('X-XSS-Protection', '1; mode=block')
+        self.send_header('Referrer-Policy', 'strict-origin-when-cross-origin')
+        super().end_headers()
+
+    def serve_file(self, filename, content_type):
+        """Serve um arquivo com o tipo MIME especificado"""
+        file_path = os.path.join(DIRECTORY, filename)
+        try:
+            with open(file_path, 'rb') as f:
+                content = f.read()
+            self.send_response(200)
+            self.send_header('Content-type', f'{content_type}; charset=utf-8')
+            self.send_header('Content-Length', len(content))
+            self.end_headers()
+            self.wfile.write(content)
+        except FileNotFoundError:
+            self.send_error(404)
+
     def check_auth(self):
         auth_header = self.headers.get('Authorization')
         if not auth_header:
@@ -80,7 +116,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             expected_password = self.config.get('admin', {}).get('password', 'admin123')
             if username == 'admin' and password == expected_password:
                 print("Authentication successful")
-                return True
+                return False
             else:
                 print("Authentication failed - Username or password incorrect")
                 return False
@@ -98,6 +134,12 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         elif self.path == '/':
             self.path = '/index.html'
             return super().do_GET()
+        elif self.path == '/robots.txt':
+            return self.serve_file('robots.txt', 'text/plain')
+        elif self.path == '/sitemap.xml':
+            return self.serve_file('sitemap.xml', 'application/xml')
+        elif self.path == '/llms.txt':
+            return self.serve_file('llms.txt', 'text/plain')
         elif self.path == '/api/config':
             if not self.check_auth():
                 self.send_response(401)

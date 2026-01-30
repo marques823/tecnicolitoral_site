@@ -1,0 +1,21 @@
+# Robots.txt para Técnico Litoral
+# https://tecnicolitoral.com
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://tecnicolitoral.com/sitemap.xml
+
+# Desabilitar acesso ao painel admin
+Disallow: /admin/
+Disallow: /admin/django/
+
+# Arquivos de configuração
+Disallow: /*.json$
+Disallow: /*.py$
+Disallow: /uploads/
+
+# Cache e arquivos temporários
+Disallow: /__pycache__/
+Disallow: /*.pyc$
