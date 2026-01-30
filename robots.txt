@@ -7,6 +7,9 @@ Allow: /
 # Sitemap
 Sitemap: https://tecnicolitoral.com/sitemap.xml
 
+# Bloquear URLs do Cloudflare
+Disallow: /cdn-cgi/
+
 # Desabilitar acesso ao painel admin
 Disallow: /admin/
 Disallow: /admin/django/

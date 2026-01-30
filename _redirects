@@ -1,0 +1,6 @@
+# Redirects para Netlify/Cloudflare Pages
+# Redirecionar www para sem www
+https://www.tecnicolitoral.com/* https://tecnicolitoral.com/:splat 301
+
+# Bloquear acesso direto ao cdn-cgi
+/cdn-cgi/* /404.html 404

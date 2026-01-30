@@ -31,6 +31,13 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="https://tecnicolitoral.com/">
     
+    <!-- Redirect www to non-www -->
+    <script>
+        if (window.location.hostname === 'www.tecnicolitoral.com') {
+            window.location.href = window.location.href.replace('www.tecnicolitoral.com', 'tecnicolitoral.com');
+        }
+    </script>
+    
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/favicon.png">
     <link rel="apple-touch-icon" href="/favicon.png">
@@ -644,7 +651,7 @@
                         <i></i>
                         <div>
                             <strong>E-mail:</strong><br>
-                            contato@tecnicolitoral.com
+                            <a href="mailto:contato@tecnicolitoral.com" data-email="contato" data-domain="tecnicolitoral.com">contato@tecnicolitoral.com</a>
                         </div>
                     </div>
                     <div class="contact-item">
